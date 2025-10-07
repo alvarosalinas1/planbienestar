@@ -9,8 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     
-    <!-- CSS AGREGADO AQUÍ PARA DEFINIR LA IMAGEN DE FONDO DEL HERO -->
-    <!-- ESTO REEMPLAZARÁ EL COLOR NARANJA PLANO DE hero-section CON LA IMAGEN -->
+    <!-- CSS AGREGADO AQUÍ PARA DEFINIR LA IMAGEN DE FONDO DEL HERO Y EL ESTILO DEL INFOGRAMA -->
     <style>
         .hero-section {
             /* 1. Usar linear-gradient como capa de color semi-transparente sobre la imagen. */
@@ -63,6 +62,76 @@
             margin: 20px auto 10px;
         }
         
+        /* --- Estilos del Nuevo Asesoramiento --- */
+        .advisor-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 15px 0 25px;
+            padding: 5px 15px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        /* --- Estilos del Infograma --- */
+        .infogram-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffffff; /* Fondo blanco */
+            color: #2c3e50; /* Texto oscuro */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin: 20px auto 30px;
+            max-width: 95%;
+        }
+
+        @media (min-width: 600px) {
+            .infogram-container {
+                flex-direction: row; /* Layout horizontal en desktop/tablet */
+                gap: 30px;
+                max-width: 80%;
+            }
+        }
+
+        .infogram-image {
+            width: 120px; /* Tamaño de la imagen de ejercicio */
+            height: 120px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0; /* Evita que la imagen se encoja */
+            margin-bottom: 15px;
+        }
+
+        @media (min-width: 600px) {
+            .infogram-image {
+                margin-bottom: 0;
+            }
+        }
+
+        .infogram-text {
+            text-align: left;
+        }
+
+        .infogram-text p {
+            font-size: 1.1rem;
+            margin: 5px 0;
+            line-height: 1.4;
+        }
+
+        .infogram-problem {
+            font-weight: 700;
+            color: #c0392b; /* Rojo para el problema */
+        }
+
+        .infogram-solution {
+            font-weight: 900;
+            color: #27ae60; /* Verde para la solución */
+        }
+        
     </style>
     
     <!-- ⚠️ AQUÍ DEBES PEGAR TUS CÓDIGOS DE SEGUIMIENTO -->
@@ -75,10 +144,48 @@
     <!-- CABECERA PRINCIPAL (HERO) -->
     <header class="hero-section">
         <div class="hero-content">
+            <!-- 1. SUBTÍTULO -->
             <p class="subtitle">¡Finalmente, la solución para el bienestar integral llegó a Chile!</p>
+            
+            <!-- 2. H1 PRINCIPAL -->
             <h1>Despierta tu Energía y Logra tu Peso Ideal: Asesoría Nutricional y Ejercicio.</h1>
             
-            <!-- LISTA DE ALTO VALOR AÑADIDA -->
+            <!-- 3. NUEVO TEXTO ASESORÍA -->
+            <p class="advisor-text">Te Asesoramos en Todo Tu Proceso</p>
+
+            <!-- 4. INFOGRAMA VISUAL (Reubicado para mayor impacto) -->
+            <div class="infogram-container">
+                <!-- Usando la ruta sugerida para la imagen generada -->
+                <img src="assets/images/infograma_ejercicio.jpg" alt="Infograma: Persona ejercitándose, ¿quieres bajar de peso? ¡Tenemos la solución!" class="infogram-image">
+                <div class="infogram-text">
+                    <p class="infogram-problem">¿Quieres mejorar tu <strong>bienestar</strong>, pero no sabes por dónde empezar?</p>
+                    <p class="infogram-solution">¡Tenemos la <strong>SOLUCIÓN!</strong> Un sistema <strong>COMPROBADO</strong> para transformar tu cuerpo y energía.</p>
+                </div>
+            </div>
+            
+            <!-- 5. PRECIO DE REFERENCIA Y DESCUENTO -->
+            <div class="price-container">
+                <span class="original-price">VALOR NORMAL SOBRE $350.000 CLP</span>
+                <p class="discount-highlight">¡SOLO HOY $115.000 CLP!</p>
+            </div>
+            
+            <!-- 6. CONTADOR DE URGENCIA Y OFERTA (Texto de urgencia modificado) -->
+            <div class="urgency-box">
+                <p class="urgency-text">OFERTA DISPONIBLE por tiempo limitado</p>
+                <div class="countdown" id="countdown"></div>
+                <p class="bonus-text">Compra ahora y accede a <strong>1 Clase Gratuita de Ejercicios</strong> y <strong>4 Clases Gratuitas de Nutrición</strong> presencial.</p>
+            </div>
+
+            <!-- 7. BOTÓN CTA A WHATSAPP -->
+            <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20estoy%20muy%20interesada%20en%20comprar%20el%20plan%20para%20mejorar%20el%20estilo%20de%20vida" class="cta-button">
+                ¡Sí, Quiero Mi Plan por $115.000 CLP y mis 5 Clases GRATIS!
+            </a>
+            
+            <!-- 8. TEXTO PEQUEÑO DE ENVÍO Y CUPOS -->
+            <p class="small-print">Haz clic para iniciar tu compra a través de WhatsApp. **¡ENVÍO A TODO CHILE!** Cupos Limitados.</p>
+
+
+            <!-- 9. LISTA DE ALTO VALOR (Movida al final del Hero) -->
             <div class="benefits-list">
                 <p class="value-statement">Esto es lo que obtienes con tu plan PROBADO para resultados reales:</p>
                 <ul>
@@ -97,28 +204,10 @@
                 </ul>
             </div>
 
-            <!-- PRECIO DE REFERENCIA Y DESCUENTO -->
-            <div class="price-container">
-                <span class="original-price">VALOR NORMAL SOBRE $350.000 CLP</span>
-                <p class="discount-highlight">¡SOLO HOY $115.000 CLP!</p>
-            </div>
-            
-            <!-- CONTADOR DE URGENCIA Y OFERTA -->
-            <div class="urgency-box">
-                <p class="urgency-text">¡OFERTA DISPONIBLE SÓLO HASTA QUE SE ACABE ESTE TIEMPO!</p>
-                <div class="countdown" id="countdown"></div>
-                <p class="bonus-text">Compra ahora y accede a <strong>1 Clase Gratuita de Ejercicios</strong> y <strong>4 Clases Gratuitas de Nutrición</strong> presencial.</p>
-            </div>
-
-            <!-- BOTÓN CTA A WHATSAPP -->
-            <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20estoy%20muy%20interesada%20en%20comprar%20el%20plan%20para%20mejorar%20el%20estilo%20de%20vida" class="cta-button">
-                ¡Sí, Quiero Mi Plan por $115.000 CLP y mis 5 Clases GRATIS!
-            </a>
-            <p class="small-print">Haz clic para iniciar tu compra a través de WhatsApp. **¡ENVÍO A TODO CHILE!** Cupos Limitados.</p>
         </div>
     </header>
 
-    <!-- 2. SECCIÓN DE RESULTADOS (GALERÍA INICIAL) - AHORA ES LA SEGUNDA SECCIÓN -->
+    <!-- 2. SECCIÓN DE RESULTADOS (GALERÍA INICIAL) - ORDEN SIN CAMBIOS -->
     <section class="section results-section">
         <h2>Resultados Reales. Historias Inspiradoras.</h2>
         <p class="subtitle">Descubre el poder de la consistencia. Estos son solo algunos de los resultados que alcanzarás en salud y físico.</p>
@@ -149,7 +238,7 @@
         </a>
     </section>
 
-    <!-- 3. PROGRAMA Y VALOR - AHORA ES LA TERCERA SECCIÓN -->
+    <!-- 3. PROGRAMA Y VALOR - ORDEN SIN CAMBIOS -->
     <section class="section program-section">
         <h2>Tu Transformación Comienza Hoy: Esto Incluye Tu Plan</h2>
         <div class="program-grid">
@@ -163,7 +252,7 @@
             </div>
             <div class="program-item">
                 <h3>Clases de Nutrición Online</h3>
-                <p>Clases semanales en vivo y grabadas con nuestros mentores para que aprendas a comer y mejorar tu salud a largo plazo.</p>
+                <p>Clases semanales en vivo y grabadas con nuestros mentores para que aprendas a comer y domines la nutrición.</p>
             </div>
             <div class="program-item">
                 <h3>Comunidad de Mentores</h3>
@@ -172,7 +261,7 @@
         </div>
     </section>
     
-    <!-- SECCIÓN MI HISTORIA / CONFIANZA -->
+    <!-- SECCIÓN MI HISTORIA / CONFIANZA - ORDEN SIN CAMBIOS -->
     <section class="section story-section bg-mint">
         <div class="story-content">
             <img src="assets/images/mi_foto.jpg" alt="Tu Foto de Perfil" class="profile-photo">
@@ -184,7 +273,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE LIDERAZGO Y OPORTUNIDAD (Sutil) -->
+    <!-- SECCIÓN DE LIDERAZGO Y OPORTUNIDAD (Sutil) - ORDEN SIN CAMBIOS -->
     <section class="section leadership-section">
         <h2>Un Camino Que No Termina en Ti: Liderazgo y Desarrollo</h2>
         <div class="leadership-grid">
@@ -199,13 +288,13 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER - ORDEN SIN CAMBIOS -->
     <footer class="footer">
         <p>&copy; 2025 Transformación 360°. Todos los derechos reservados.</p>
         <p>Contacto: <a href="https://api.whatsapp.com/send?phone=56981590912">WhatsApp +56 9 8159 0912</a></p>
     </footer>
 
-    <!-- ESTRUCTURA DEL MODAL (GALERÍA POP-UP) -->
+    <!-- ESTRUCTURA DEL MODAL (GALERÍA POP-UP) - ORDEN SIN CAMBIOS -->
     <div id="resultsModal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-button">&times;</button>
