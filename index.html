@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     
-    <!-- CSS AGREGADO AQUÍ PARA DEFINIR LA IMAGEN DE FONDO DEL HERO Y EL ESTILO DEL INFOGRAMA -->
+    <!-- CSS AGREGADO AQUÍ PARA DEFINIR LA IMAGEN DE FONDO DEL HERO Y EL ESTILO -->
     <style>
         .hero-section {
             /* 1. Usar linear-gradient como capa de color semi-transparente sobre la imagen. */
@@ -74,12 +74,10 @@
             display: inline-block;
         }
 
-        /* --- Estilos del Infograma --- */
+        /* --- Estilos del Infograma (Solo texto) --- */
         .infogram-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            display: block; 
+            text-align: center;
             background-color: #ffffff; /* Fondo blanco */
             color: #2c3e50; /* Texto oscuro */
             padding: 20px;
@@ -91,29 +89,12 @@
 
         @media (min-width: 600px) {
             .infogram-container {
-                flex-direction: row; /* Layout horizontal en desktop/tablet */
-                gap: 30px;
                 max-width: 80%;
             }
         }
 
-        .infogram-image {
-            width: 120px; /* Tamaño de la imagen de ejercicio */
-            height: 120px;
-            border-radius: 8px;
-            object-fit: cover;
-            flex-shrink: 0; /* Evita que la imagen se encoja */
-            margin-bottom: 15px;
-        }
-
-        @media (min-width: 600px) {
-            .infogram-image {
-                margin-bottom: 0;
-            }
-        }
-
         .infogram-text {
-            text-align: left;
+            text-align: center;
         }
 
         .infogram-text p {
@@ -132,6 +113,21 @@
             color: #27ae60; /* Verde para la solución */
         }
         
+        /* Nuevo estilo para la sección fuera del Hero que contiene la urgencia y beneficios */
+        .cta-benefits-section {
+            background-color: #f7f7f7; /* Un color de fondo claro para separarlo del Hero */
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        /* Aseguramos que el texto del contador de urgencia sea legible */
+        .urgency-text {
+            color: #c0392b; /* Rojo para resaltar la urgencia */
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+        
     </style>
     
     <!-- ⚠️ AQUÍ DEBES PEGAR TUS CÓDIGOS DE SEGUIMIENTO -->
@@ -141,7 +137,7 @@
 </head>
 <body>
 
-    <!-- CABECERA PRINCIPAL (HERO) -->
+    <!-- CABECERA PRINCIPAL (HERO) - Título, Asesoría, Infograma (solo texto), Precio -->
     <header class="hero-section">
         <div class="hero-content">
             <!-- 1. SUBTÍTULO -->
@@ -153,10 +149,8 @@
             <!-- 3. NUEVO TEXTO ASESORÍA -->
             <p class="advisor-text">Te Asesoramos en Todo Tu Proceso</p>
 
-            <!-- 4. INFOGRAMA VISUAL (Reubicado para mayor impacto) -->
+            <!-- 4. INFOGRAMA VISUAL (Solo texto destacado) -->
             <div class="infogram-container">
-                <!-- Usando la ruta sugerida para la imagen generada -->
-                <img src="assets/images/infograma_ejercicio.jpg" alt="Infograma: Persona ejercitándose, ¿quieres bajar de peso? ¡Tenemos la solución!" class="infogram-image">
                 <div class="infogram-text">
                     <p class="infogram-problem">¿Quieres mejorar tu <strong>bienestar</strong>, pero no sabes por dónde empezar?</p>
                     <p class="infogram-solution">¡Tenemos la <strong>SOLUCIÓN!</strong> Un sistema <strong>COMPROBADO</strong> para transformar tu cuerpo y energía.</p>
@@ -168,24 +162,29 @@
                 <span class="original-price">VALOR NORMAL SOBRE $350.000 CLP</span>
                 <p class="discount-highlight">¡SOLO HOY $115.000 CLP!</p>
             </div>
+        </div>
+    </header>
+
+    <!-- NUEVA SECCIÓN: URGENCIA (RELOJ), CTA Y BENEFICIOS -->
+    <section class="cta-benefits-section">
+        <div class="hero-content" style="max-width: 900px; padding: 0;">
             
-            <!-- 6. CONTADOR DE URGENCIA Y OFERTA (Texto de urgencia modificado) -->
+            <!-- CONTADOR DE URGENCIA Y OFERTA -->
             <div class="urgency-box">
                 <p class="urgency-text">OFERTA DISPONIBLE por tiempo limitado</p>
-                <div class="countdown" id="countdown"></div>
+                <div class="countdown" id="countdown"></div> <!-- ESTE ES EL ELEMENTO DEL RELOJ -->
                 <p class="bonus-text">Compra ahora y accede a <strong>1 Clase Gratuita de Ejercicios</strong> y <strong>4 Clases Gratuitas de Nutrición</strong> presencial.</p>
             </div>
 
-            <!-- 7. BOTÓN CTA A WHATSAPP -->
+            <!-- BOTÓN CTA A WHATSAPP -->
             <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20estoy%20muy%20interesada%20en%20comprar%20el%20plan%20para%20mejorar%20el%20estilo%20de%20vida" class="cta-button">
                 ¡Sí, Quiero Mi Plan por $115.000 CLP y mis 5 Clases GRATIS!
             </a>
             
-            <!-- 8. TEXTO PEQUEÑO DE ENVÍO Y CUPOS -->
+            <!-- TEXTO PEQUEÑO DE ENVÍO Y CUPOS -->
             <p class="small-print">Haz clic para iniciar tu compra a través de WhatsApp. **¡ENVÍO A TODO CHILE!** Cupos Limitados.</p>
 
-
-            <!-- 9. LISTA DE ALTO VALOR (Movida al final del Hero) -->
+            <!-- LISTA DE ALTO VALOR -->
             <div class="benefits-list">
                 <p class="value-statement">Esto es lo que obtienes con tu plan PROBADO para resultados reales:</p>
                 <ul>
@@ -203,9 +202,8 @@
                     <li>✅ Optimiza tu enfoque, concentración y sistemas cognitivos.</li>
                 </ul>
             </div>
-
         </div>
-    </header>
+    </section>
 
     <!-- 2. SECCIÓN DE RESULTADOS (GALERÍA INICIAL) - ORDEN SIN CAMBIOS -->
     <section class="section results-section">
@@ -333,6 +331,7 @@
     </div>
 
     <!-- Scripts -->
+    <!-- El script countdown.js es el que da vida al reloj -->
     <script src="assets/js/countdown.js"></script>
     <script>
         // Lógica para el MODAL (POP-UP)
