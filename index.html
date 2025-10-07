@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transformación 360° | Programa de Bienestar y Liderazgo</title>
+    <!-- Incluimos una fuente limpia y elegante de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     
-    </head>
+    <!-- ⚠️ AQUÍ DEBES PEGAR TUS CÓDIGOS DE SEGUIMIENTO -->
+    <!-- Coloca tu código de Meta Píxel (Base Code) aquí -->
+    <!-- Coloca tu código de Google Analytics 4 (GTAG) aquí -->
+    
+</head>
 <body>
 
+    <!-- CABECERA PRINCIPAL (HERO) -->
     <header class="hero-section">
         <div class="hero-content">
             <p class="subtitle">¡Finalmente, la solución para el bienestar integral llegó a Chile!</p>
@@ -23,12 +29,14 @@
                 </ul>
             </div>
             
+            <!-- CONTADOR DE URGENCIA Y OFERTA -->
             <div class="urgency-box">
                 <p class="urgency-text">¡OFERTA ÚNICA POR TIEMPO LIMITADO!</p>
                 <div class="countdown" id="countdown"></div>
                 <p class="bonus-text">Compra ahora y accede a **1 Clase Gratuita de Ejercicios** y **4 Clases Gratuitas de Nutrición** presencial.</p>
             </div>
 
+            <!-- BOTÓN CTA A WHATSAPP -->
             <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20estoy%20muy%20interesada%20en%20comprar%20el%20plan%20para%20mejorar%20el%20estilo%20de%20vida" class="cta-button">
                 ¡Sí, Quiero Mi Plan por $115.000 CLP y mis 5 Clases GRATIS!
             </a>
@@ -36,6 +44,7 @@
         </div>
     </header>
 
+    <!-- PROGRAMA Y VALOR -->
     <section class="section program-section">
         <h2>Tu Transformación Comienza Hoy: Esto Incluye Tu Plan</h2>
         <div class="program-grid">
@@ -58,11 +67,13 @@
         </div>
     </section>
     
+    <!-- SECCIÓN DE RESULTADOS (GALERÍA INICIAL) -->
     <section class="section results-section">
         <h2>Resultados Reales. Historias Inspiradoras.</h2>
         <p class="subtitle">Descubre el poder de la consistencia. Estos son solo algunos de los resultados que alcanzarás en salud y físico.</p>
         
         <div class="gallery-grid">
+            <!-- RESULTADOS INICIALES (3 IMÁGENES COMBINADAS) -->
             <div class="result-card">
                 <img src="assets/images/resultado_1.jpg" alt="Transformación Antes y Después 1">
                 <p class="caption">¡Baja de peso y aumenta la vitalidad!</p>
@@ -77,11 +88,17 @@
             </div>
         </div>
 
+        <!-- BOTÓN PARA ABRIR LA GALERÍA MODAL -->
+        <button id="openModalBtn" class="cta-button results-cta secondary-cta">
+            Ver Más Resultados (¡20 Historias Adicionales!)
+        </button>
+
         <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20estoy%20muy%20interesada%20en%20comprar%20el%20plan%20para%20mejorar%20el%20estilo%20de%20vida" class="cta-button results-cta">
             ¡Quiero mi Propio Antes y Después!
         </a>
     </section>
 
+    <!-- SECCIÓN MI HISTORIA / CONFIANZA -->
     <section class="section story-section bg-mint">
         <div class="story-content">
             <img src="assets/images/mi_foto.jpg" alt="Tu Foto de Perfil" class="profile-photo">
@@ -93,6 +110,7 @@
         </div>
     </section>
 
+    <!-- SECCIÓN DE LIDERAZGO Y OPORTUNIDAD (Sutil) -->
     <section class="section leadership-section">
         <h2>Un Camino Que No Termina en Ti: Liderazgo y Desarrollo</h2>
         <div class="leadership-grid">
@@ -107,11 +125,79 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <p>&copy; 2025 Transformación 360°. Todos los derechos reservados.</p>
         <p>Contacto: <a href="https://api.whatsapp.com/send?phone=56981590912">WhatsApp +56 9 8159 0912</a></p>
     </footer>
 
+    <!-- ESTRUCTURA DEL MODAL (GALERÍA POP-UP) -->
+    <div id="resultsModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h2 class="modal-title">¡20 Transformaciones Más!</h2>
+            <p class="subtitle" style="color: #666;">Inspírate con el poder de nuestro sistema.</p>
+            
+            <div class="modal-gallery-grid">
+                <!-- Aquí van las 20 fotos adicionales. Debes nombrarlas resultado_4.jpg hasta resultado_23.jpg -->
+                <div class="result-card"><img src="assets/images/resultado_4.jpg" alt="Resultado 4"><p class="caption">¡Impacto total!</p></div>
+                <div class="result-card"><img src="assets/images/resultado_5.jpg" alt="Resultado 5"><p class="caption">Más vitalidad.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_6.jpg" alt="Resultado 6"><p class="caption">Logro increíble.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_7.jpg" alt="Resultado 7"><p class="caption">Cambio de vida.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_8.jpg" alt="Resultado 8"><p class="caption">Transformación física.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_9.jpg" alt="Resultado 9"><p class="caption">Pérdida de peso.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_10.jpg" alt="Resultado 10"><p class="caption">Aumento de energía.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_11.jpg" alt="Resultado 11"><p class="caption">Salud renovada.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_12.jpg" alt="Resultado 12"><p class="caption">Meta alcanzada.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_13.jpg" alt="Resultado 13"><p class="caption">Nueva confianza.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_14.jpg" alt="Resultado 14"><p class="caption">Fuerza y vitalidad.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_15.jpg" alt="Resultado 15"><p class="caption">Adiós fatiga.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_16.jpg" alt="Resultado 16"><p class="caption">Cuerpo en forma.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_17.jpg" alt="Resultado 17"><p class="caption">Cambio de hábitos.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_18.jpg" alt="Resultado 18"><p class="caption">Libertad digestiva.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_19.jpg" alt="Resultado 19"><p class="caption">Energía total.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_20.jpg" alt="Resultado 20"><p class="caption">Mejor versión.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_21.jpg" alt="Resultado 21"><p class="caption">Bienestar completo.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_22.jpg" alt="Resultado 22"><p class="caption">Transformación real.</p></div>
+                <div class="result-card"><img src="assets/images/resultado_23.jpg" alt="Resultado 23"><p class="caption">Salud para siempre.</p></div>
+            </div>
+
+            <!-- CTA DENTRO DEL MODAL -->
+            <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20vi%20la%20galer%C3%ADa%20completa%20y%20quiero%20comenzar%20mi%20plan%20ahora%20mismo!" class="cta-button modal-cta">
+                ¡Quiero comenzar con mi plan ahora!
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="assets/js/countdown.js"></script>
+    <script>
+        // Lógica para el MODAL (POP-UP)
+
+        const modal = document.getElementById('resultsModal');
+        const openBtn = document.getElementById('openModalBtn');
+        const closeBtn = document.querySelector('.close-button');
+
+        // Función para abrir el modal
+        openBtn.onclick = function() {
+            modal.style.display = 'flex';
+            // Opcional: Deshabilitar el scroll del cuerpo para enfocarse en el modal
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        // Función para cerrar el modal con la X
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restaurar el scroll
+        }
+
+        // Función para cerrar el modal al hacer clic fuera de él
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restaurar el scroll
+            }
+        }
+    </script>
 </body>
 </html>
