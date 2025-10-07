@@ -117,7 +117,7 @@
         .cta-benefits-section {
             background-color: #f7f7f7; /* Un color de fondo claro para separarlo del Hero */
             padding: 30px 20px;
-            text-align: center;
+            text-align: center; /* Centra el contenido como el reloj y el CTA */
         }
         
         /* Aseguramos que el texto del contador de urgencia sea legible */
@@ -128,6 +128,26 @@
             margin-bottom: 15px;
         }
         
+        /* Estilos para centrar la lista pero alinear los ítems a la izquierda */
+        .benefits-list {
+            max-width: 600px; /* Ancho máximo para que no se extienda demasiado en desktop */
+            margin: 0 auto; /* Centra el contenedor de la lista */
+            text-align: center; /* Asegura que el título de la lista esté centrado */
+        }
+
+        .benefits-list ul {
+            list-style: none; /* Quitamos los puntos por defecto */
+            padding: 0;
+            margin-top: 20px;
+            text-align: left; /* Alinea los ítems de la lista a la izquierda DENTRO del contenedor centrado */
+            width: 100%;
+        }
+
+        .benefits-list ul li {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
     </style>
     
     <!-- ⚠️ AQUÍ DEBES PEGAR TUS CÓDIGOS DE SEGUIMIENTO -->
@@ -140,8 +160,8 @@
     <!-- CABECERA PRINCIPAL (HERO) - Título, Asesoría, Infograma (solo texto), Precio -->
     <header class="hero-section">
         <div class="hero-content">
-            <!-- 1. SUBTÍTULO -->
-            <p class="subtitle">¡Finalmente, la solución para el bienestar integral llegó a Chile!</p>
+            <!-- 1. SUBTÍTULO (FRASE ELIMINADA) -->
+            <!-- <p class="subtitle">¡Finalmente, la solución para el bienestar integral llegó a Chile!</p> -->
             
             <!-- 2. H1 PRINCIPAL -->
             <h1>Despierta tu Energía y Logra tu Peso Ideal: Asesoría Nutricional y Ejercicio.</h1>
@@ -165,41 +185,42 @@
         </div>
     </header>
 
-    <!-- NUEVA SECCIÓN: URGENCIA (RELOJ), CTA Y BENEFICIOS -->
+    <!-- NUEVA SECCIÓN: URGENCIA (RELOJ), CTA Y BENEFICIOS - Todo centrado, lista con ítems a la izquierda -->
     <section class="cta-benefits-section">
         <div class="hero-content" style="max-width: 900px; padding: 0;">
             
-            <!-- CONTADOR DE URGENCIA Y OFERTA -->
+            <!-- CONTADOR DE URGENCIA Y OFERTA (CENTRADOS) -->
             <div class="urgency-box">
                 <p class="urgency-text">OFERTA DISPONIBLE por tiempo limitado</p>
-                <div class="countdown" id="countdown"></div> <!-- ESTE ES EL ELEMENTO DEL RELOJ -->
+                <div class="countdown" id="countdown"></div> <!-- RELOJ CENTRADO -->
                 <p class="bonus-text">Compra ahora y accede a <strong>1 Clase Gratuita de Ejercicios</strong> y <strong>4 Clases Gratuitas de Nutrición</strong> presencial.</p>
             </div>
 
-            <!-- BOTÓN CTA A WHATSAPP -->
+            <!-- BOTÓN CTA A WHATSAPP (CENTRADO) -->
             <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20estoy%20muy%20interesada%20en%20comprar%20el%20plan%20para%20mejorar%20el%20estilo%20de%20vida" class="cta-button">
                 ¡Sí, Quiero Mi Plan por $115.000 CLP y mis 5 Clases GRATIS!
             </a>
             
-            <!-- TEXTO PEQUEÑO DE ENVÍO Y CUPOS -->
+            <!-- TEXTO PEQUEÑO DE ENVÍO Y CUPOS (CENTRADO) -->
             <p class="small-print">Haz clic para iniciar tu compra a través de WhatsApp. **¡ENVÍO A TODO CHILE!** Cupos Limitados.</p>
 
-            <!-- LISTA DE ALTO VALOR -->
+            <!-- LISTA DE ALTO VALOR (CENTRALIZADA CON ÍTEMS A LA IZQUIERDA) -->
             <div class="benefits-list">
                 <p class="value-statement">Esto es lo que obtienes con tu plan PROBADO para resultados reales:</p>
                 <ul>
-                    <li>✅ <strong>PLAN PROBADO:</strong> Garantizado para bajar en promedio <strong>2 a 3 kg por semana.</strong></li>
-                    <li>✅ <strong>24/7 Plataforma Nutricional:</strong> Recetas saludables, rutinas de ejercicios profesionales, <strong>actualizadas mes a mes.</strong></li>
-                    <li>✅ <strong>Asesor con Atención Personalizada:</strong> Soporte directo para resolver dudas y optimizar tu progreso.</li>
-                    <li>✅ <strong>Reto Exclusivo de 21 Días:</strong> Incorporación inmediata a nuestra comunidad para asegurar resultados físicos rápidos y en grupo.</li>
-                    <li>✅ <strong>Scanner de Bioimpedancia:</strong> Medición de grasa y músculo valorada en <strong>$50.000 CLP</strong> (incluido sin costo extra).</li>
-                    <li>✅ <strong>Cursos Online de Nutrición en Vivo:</strong> Clases semanales por Zoom para que aprendas a comer y domines la nutrición.</li>
-                    <li>✅ <strong>Suministro de Suplementos Nutricionales:</strong> El soporte de nutrientes esencial para acelerar tu metabolismo y energía.</li>
-                    <li>✅ <strong>Aplicación de Rutinas Profesionales:</strong> Acceso fácil a tus entrenamientos desde cualquier dispositivo.</li>
-                    <li>✅ <strong>Actividades Presenciales:</strong> Eventos para construir tu mejor versión y conectar con la comunidad.</li>
-                    <li>✅ Oxida la grasa, controla tu peso de forma guiada y <strong>sostenible.</strong></li>
-                    <li>✅ Mejora drásticamente tu digestión, aumenta tu energía y vitalidad diaria.</li>
-                    <li>✅ Optimiza tu enfoque, concentración y sistemas cognitivos.</li>
+                    <!-- Ítems sin el checkmark, list-style: none aplicado en CSS, alineación a la izquierda aplicada en CSS -->
+                    <li><strong>PLAN PROBADO:</strong> Garantizado para bajar en promedio <strong>2 a 3 kg por semana.</strong></li>
+                    <li><strong>24/7 Plataforma Nutricional:</strong> Recetas saludables, rutinas de ejercicios profesionales, <strong>actualizadas mes a mes.</strong></li>
+                    <li><strong>Asesor con Atención Personalizada:</strong> Soporte directo para resolver dudas y optimizar tu progreso.</li>
+                    <li><strong>Reto Exclusivo de 21 Días:</strong> Incorporación inmediata a nuestra comunidad para asegurar resultados físicos rápidos y en grupo.</li>
+                    <li><strong>Scanner de Bioimpedancia:</strong> Medición de grasa y músculo valorada en <strong>$50.000 CLP</strong> (incluido sin costo extra).</li>
+                    <li><strong>Cursos Online de Nutrición en Vivo:</strong> Clases semanales por Zoom para que aprendas a comer y domines la nutrición.</li>
+                    <li><strong>Suministro de Suplementos Nutricionales:</strong> El soporte de nutrientes esencial para acelerar tu metabolismo y energía.</li>
+                    <li><strong>Aplicación de Rutinas Profesionales:</strong> Acceso fácil a tus entrenamientos desde cualquier dispositivo.</li>
+                    <li><strong>Actividades Presenciales:</strong> Eventos para construir tu mejor versión y conectar con la comunidad.</li>
+                    <li>Oxida la grasa, controla tu peso de forma guiada y <strong>sostenible.</strong></li>
+                    <li>Mejora drásticamente tu digestión, aumenta tu energía y vitalidad diaria.</li>
+                    <li>Optimiza tu enfoque, concentración y sistemas cognitivos.</li>
                 </ul>
             </div>
         </div>
@@ -263,7 +284,7 @@
     <section class="section story-section bg-mint">
         <div class="story-content">
             <img src="assets/images/mi_foto.jpg" alt="Tu Foto de Perfil" class="profile-photo">
-            <h2>Mi Historia: De la Lucha Oculta a la Vitalidad</h2>
+            <h2>Mi Historia: De la Adicción a la Vitalidad</h2> <!-- FRASE ACTUALIZADA -->
             <p>Sé lo que es sentirse atrapado por la comida. Mi lucha no era solo por el peso; era la <strong>ansiedad de buscar galletas</strong> incluso cuando no quedaban, la <strong>vergüenza social</strong> de la mala digestión y, peor aún, los <strong>dolores abdominales paralizantes</strong> que me quitaban el aliento. Sabía que debía hacer ejercicio, pero mi cuerpo simplemente no tenía la <strong>energía</strong> para empezar.</p>
             <p><strong>No es tu culpa.</strong> El problema no eres tú, es el sistema que aún no conoces.</p>
             <p>Encontré una <strong>comunidad y un sistema activo</strong> que renovó mi vida. Mi transformación fue total: de la fatiga crónica a una <strong>explosión de energía</strong>, la digestión mejoró y mi <strong>confianza</strong> se disparó.</p>
