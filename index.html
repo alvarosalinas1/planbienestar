@@ -9,6 +9,62 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     
+    <!-- CSS AGREGADO AQUÍ PARA DEFINIR LA IMAGEN DE FONDO DEL HERO -->
+    <!-- ESTO REEMPLAZARÁ EL COLOR NARANJA PLANO DE hero-section CON LA IMAGEN -->
+    <style>
+        .hero-section {
+            /* 1. Usar linear-gradient como capa de color semi-transparente sobre la imagen. */
+            /* Usa el color original (E07434) como referencia para mantener la marca. */
+            background-image: linear-gradient(rgba(224, 116, 52, 0.75), rgba(224, 116, 52, 0.75)), url('assets/images/hero.jpg');
+            
+            /* 2. Asegura que la imagen cubra todo el espacio. */
+            background-size: cover;
+            
+            /* 3. Centra la imagen. */
+            background-position: center;
+            
+            /* 4. Asegura que el texto se vea blanco sobre la imagen oscura. */
+            color: #ffffff;
+            
+            /* 5. Altura mínima para que la imagen se vea bien en pantallas grandes y móviles */
+            min-height: 85vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            padding: 20px;
+            max-width: 900px;
+        }
+
+        /* Estilo para el precio tachado */
+        .original-price {
+            font-size: 1.5rem;
+            text-decoration: line-through;
+            opacity: 0.7;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 400;
+        }
+
+        /* Estilo para el gran descuento (letra marcada) */
+        .discount-highlight {
+            font-size: 2.8rem; /* Tamaño más grande para la letra marcada */
+            font-weight: 900; /* Peso extra bold */
+            margin: 0;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para que destaque */
+        }
+
+        /* Contenedor del precio para centrar ambos elementos */
+        .price-container {
+            margin: 20px auto 10px;
+        }
+        
+    </style>
+    
     <!-- ⚠️ AQUÍ DEBES PEGAR TUS CÓDIGOS DE SEGUIMIENTO -->
     <!-- Coloca tu código de Meta Píxel (Base Code) aquí -->
     <!-- Coloca tu código de Google Analytics 4 (GTAG) aquí -->
@@ -40,10 +96,16 @@
                     <li>✅ Optimiza tu enfoque, concentración y sistemas cognitivos.</li>
                 </ul>
             </div>
+
+            <!-- PRECIO DE REFERENCIA Y DESCUENTO -->
+            <div class="price-container">
+                <span class="original-price">VALOR NORMAL SOBRE $350.000 CLP</span>
+                <p class="discount-highlight">¡SOLO HOY $115.000 CLP!</p>
+            </div>
             
             <!-- CONTADOR DE URGENCIA Y OFERTA -->
             <div class="urgency-box">
-                <p class="urgency-text">¡OFERTA ÚNICA POR TIEMPO LIMITADO!</p>
+                <p class="urgency-text">¡OFERTA DISPONIBLE SÓLO HASTA QUE SE ACABE ESTE TIEMPO!</p>
                 <div class="countdown" id="countdown"></div>
                 <p class="bonus-text">Compra ahora y accede a <strong>1 Clase Gratuita de Ejercicios</strong> y <strong>4 Clases Gratuitas de Nutrición</strong> presencial.</p>
             </div>
@@ -52,7 +114,7 @@
             <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20estoy%20muy%20interesada%20en%20comprar%20el%20plan%20para%20mejorar%20el%20estilo%20de%20vida" class="cta-button">
                 ¡Sí, Quiero Mi Plan por $115.000 CLP y mis 5 Clases GRATIS!
             </a>
-            <p class="small-print">Haz clic para iniciar tu compra a través de WhatsApp. Cupos Limitados.</p>
+            <p class="small-print">Haz clic para iniciar tu compra a través de WhatsApp. **¡ENVÍO A TODO CHILE!** Cupos Limitados.</p>
         </div>
     </header>
 
