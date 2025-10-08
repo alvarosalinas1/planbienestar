@@ -259,7 +259,8 @@
             max-width: 1000px;
             position: relative;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            max-height: 90vh;
+            /* CORRECCIÓN: Eliminamos el max-height para permitir que crezca con las 40 fotos */
+            /* max-height: 90vh; */ 
         }
         .modal-gallery-grid {
             display: grid;
@@ -333,7 +334,7 @@
         
         <!-- BOTÓN PARA ABRIR LA GALERÍA MODAL -->
         <button id="openModalBtn" class="cta-button cta-tertiary cta-animated" style="margin-top: 10px;">
-            Ver 20 resultados más del programa
+            Ver 40 resultados más del programa
         </button>
         
         <!-- Flechas Animadas (REUBICADAS DEBAJO DEL BOTÓN) -->
@@ -478,7 +479,7 @@
     <div id="resultsModal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-button">&times;</button>
-            <h2 class="modal-title">¡20 Transformaciones Más!</h2>
+            <h2 class="modal-title">¡40 Transformaciones Más!</h2>
             <p class="subtitle" style="color: #666;">Inspírate con el poder de nuestro sistema.</p>
             
             <div class="modal-gallery-grid" id="modal-gallery">
@@ -496,9 +497,10 @@
     <!-- El script countdown.js es el que da vida al reloj -->
     <script src="assets/js/countdown.js"></script>
     <script>
-        // Array de resultados (del 4 al 23)
-        const totalResults = 20;
+        // CORRECCIÓN: Aumentamos el número total de resultados a 40 (del 4 al 43).
+        const totalResults = 40;
         const resultsData = Array.from({ length: totalResults }, (_, i) => ({
+            // Los IDs de imagen irán de 4 a 43 (i + 4)
             id: i + 4,
             caption: `Transformación ${i + 4}`
         }));
@@ -517,22 +519,26 @@
             let modalContent = '';
 
             // 1. Crear el contenido del Carrusel (Duplicado para loop infinito)
+            // Usamos solo los primeros 20 resultados para el carrusel para no sobrecargarlo visualmente
+            const carouselResults = resultsData.slice(0, 20); 
             for (let k = 0; k < 2; k++) { // Duplicar para el loop
-                resultsData.forEach(result => {
+                carouselResults.forEach(result => {
                     carouselContent += `
                         <div class="carousel-item">
-                            <img src="assets/images/resultado_${result.id}.jpg" alt="Resultado ${result.id}">
+                            <img src="assets/images/resultado_${result.id}.jpg" alt="Resultado ${result.id}" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/120x120/769E94/ffffff?text=Resultado%20${result.id}'">
                         </div>
                     `;
                 });
             }
             carousel.innerHTML = carouselContent;
 
-            // 2. Crear el contenido del Modal (Sin duplicar)
+            // 2. Crear el contenido del Modal (Usamos todos los 40 resultados)
             resultsData.forEach(result => {
                 modalContent += `
                     <div class="result-card">
-                        <img src="assets/images/resultado_${result.id}.jpg" alt="Resultado ${result.id}">
+                        <img src="assets/images/resultado_${result.id}.jpg" alt="Resultado ${result.id}"
+                             onerror="this.onerror=null; this.src='https://placehold.co/200x150/769E94/ffffff?text=Resultado%20${result.id}'">
                         <p class="caption">${result.caption}</p>
                     </div>
                 `;
