@@ -104,6 +104,11 @@
             background-color: #f39c12; /* Amarillo/Dorado */
             color: var(--color-text-dark);
         }
+        /* Nuevo estilo para botón de Instagram */
+        .cta-instagram {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+            color: var(--color-text-light);
+        }
         
         /* Estilo para el texto small-print y negrita */
         .small-print {
@@ -146,7 +151,6 @@
             margin-bottom: 10px;
             font-size: 1.1rem;
             line-height: 1.4;
-            /* Usa el checkmark directamente en el HTML, pero asegúrate de que el padding no lo empuje */
         }
         .benefits-list ul li span {
              margin-right: 8px; /* Espacio para el checkmark */
@@ -208,7 +212,6 @@
         }
 
         /* --- OTROS ESTILOS (Precio, Infograma, Historia) --- */
-        /* [Mantener estilos previos para precio, infograma, héroe, etc.] */
         .original-price { font-size: 1.5rem; text-decoration: line-through; opacity: 0.7; display: block; margin-bottom: 5px; font-weight: 400; }
         .discount-highlight { font-size: 3rem; font-weight: 900; margin: 0; line-height: 1.2; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
         .infogram-container { background-color: #ffffff; color: var(--color-text-dark); padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); margin: 20px auto 30px; max-width: 95%; }
@@ -219,7 +222,16 @@
         .story-content { max-width: 800px; margin: 0 auto; text-align: center; }
         .profile-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 5px solid var(--color-text-light); }
         .countdown { font-size: 2.5rem; font-weight: 900; margin: 20px auto; color: #f1c40f; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); max-width: 300px; }
-        .footer { padding: 20px; text-align: center; background-color: var(--color-bg-light); color: var(--color-text-dark); font-size: 0.9rem; margin-top: 30px; }
+        
+        /* --- FOOTER RESTAURADO --- */
+        .footer { 
+            padding: 20px; 
+            text-align: center; 
+            background-color: var(--color-bg-light); 
+            color: var(--color-text-dark); 
+            font-size: 0.9rem; 
+            margin-top: 30px; 
+        }
         .footer a { color: var(--color-primary); text-decoration: none; }
 
 
@@ -232,14 +244,15 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
+            overflow-y: auto; /* Para permitir scroll dentro si el contenido es grande */
             background-color: rgba(0, 0, 0, 0.9);
             justify-content: center;
             align-items: center;
+            /* Usar 'flex' cuando se muestre el modal */
         }
         .modal-content {
             background-color: #fff;
-            margin: 15% auto;
+            margin: 40px auto; /* Margen superior e inferior para evitar que toque los bordes */
             padding: 20px;
             border-radius: 10px;
             width: 90%;
@@ -247,7 +260,6 @@
             position: relative;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             max-height: 90vh;
-            overflow-y: auto;
         }
         .modal-gallery-grid {
             display: grid;
@@ -319,18 +331,18 @@
             <div class="result-card"><img src="assets/images/resultado_3.jpg" alt="Transformación Antes y Después 3"><p class="caption">Transformación completa de cuerpo y mente.</p></div>
         </div>
         
-        <!-- Flechas Animadas -->
+        <!-- BOTÓN PARA ABRIR LA GALERÍA MODAL -->
+        <button id="openModalBtn" class="cta-button cta-tertiary cta-animated" style="margin-top: 10px;">
+            Ver 20 resultados más del programa
+        </button>
+        
+        <!-- Flechas Animadas (REUBICADAS DEBAJO DEL BOTÓN) -->
         <div class="arrow-animation">
             <span>&#9650;</span>
             <span>&#9650;</span>
             <span>&#9650;</span>
         </div>
 
-        <!-- BOTÓN PARA ABRIR LA GALERÍA MODAL -->
-        <button id="openModalBtn" class="cta-button cta-tertiary cta-animated" style="margin-top: 10px;">
-            Ver 20 resultados más del programa
-        </button>
-        
         <!-- Carrusel de resultados pequeños -->
         <div class="carousel-container">
             <!-- Duplicar el contenido para un loop infinito suave -->
@@ -356,7 +368,7 @@
             </div>
             <div class="program-item">
                 <h3>Comunidad de Mentores</h3>
-                <p>Forma parte de nuestra comunidad de bienestar, con guía constante, apoyo y responsabilidad de líderes en el camino hacia tu mejor versión.</p>
+                <p>Forma parte de nuestra comunidad de bienestar, con guía constante, apoyo y responsabilidad de líderes en el camino hacia tu mejor versión</p>
             </div>
         </div>
 
@@ -424,6 +436,4 @@
         <div class="story-content">
             <img src="assets/images/mi_foto.jpg" alt="Tu Foto de Perfil" class="profile-photo">
             <h2>Mi Historia: De la Adicción a la Vitalidad</h2>
-            <p>Sé lo que es sentirse atrapado por la comida. Mi lucha no era solo por el peso; era la <strong>ansiedad de buscar galletas</strong> incluso cuando no quedaban, la <strong>vergüenza social</strong> de la mala digestión y, peor aún, los <strong>dolores abdominales paralizantes</strong> que me quitaban el aliento. Sabía que debía hacer ejercicio, pero mi cuerpo simplemente no tenía la <strong>energía</strong> para empezar.</p>
-            <p><strong>No es tu culpa.</strong> El problema no eres tú, es el sistema que aún no conoces.</p>
-            <p>Encontré una <strong>comunidad y un sistema activo</strong
+            <p>Sé lo que es sentirse atrapado por la comida. Mi lucha no era solo por el peso; era la <strong>ansiedad de buscar galletas</strong> incluso cuando no quedaban, la <strong>vergüenza social</strong> de la mala digestión y, peor aún, lo
