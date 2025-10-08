@@ -436,4 +436,140 @@
         <div class="story-content">
             <img src="assets/images/mi_foto.jpg" alt="Tu Foto de Perfil" class="profile-photo">
             <h2>Mi Historia: De la Adicción a la Vitalidad</h2>
-            <p>Sé lo que es sentirse atrapado por la comida. Mi lucha no era solo por el peso; era la <strong>ansiedad de buscar galletas</strong> incluso cuando no quedaban, la <strong>vergüenza social</strong> de la mala digestión y, peor aún, lo
+            <p>Sé lo que es sentirse atrapado por la comida. Mi lucha no era solo por el peso; era la <strong>ansiedad de buscar galletas</strong> incluso cuando no quedaban, la <strong>vergüenza social</strong> de la mala digestión y, peor aún, los <strong>dolores abdominales paralizantes</strong> que me quitaban el aliento. Sabía que debía hacer ejercicio, pero mi cuerpo simplemente no tenía la <strong>energía</strong> para empezar.</p>
+            <p><strong>No es tu culpa.</strong> El problema no eres tú, es el sistema que aún no conoces.</p>
+            <p>Encontré una <strong>comunidad y un sistema activo</strong> que renovó mi vida. Mi transformación fue total: de la fatiga crónica a una <strong>explosión de energía</strong>, la digestión mejoró y mi <strong>confianza</strong> se disparó.</p>
+            <p>Mi pasión es el <strong>liderazgo</strong> y la <strong>enseñanza</strong>. Como padre, descubrí que guiar a otros a su mejor versión es mi mayor gratificación. Hoy, te ofrezco ese mismo camino. Si sueñas con esa <strong>vitalidad</strong> y estás listo para un <strong>desarrollo personal profundo</strong>, te guiaré con las herramientas que te harán <strong>independiente</strong> y exitoso. La <strong>confianza</strong> es la base de todo.</p>
+        </div>
+    </section>
+
+    <!-- BLOQUE 6 - LIDERAZGO Y FOOTER - Fondo Gris Claro -->
+    <section class="section section-f5">
+        <h2 style="margin-bottom: 30px;">Un Camino Que No Termina en Ti: Liderazgo y Desarrollo</h2>
+        <div class="leadership-grid">
+            <div class="leadership-item">
+                <h3>Impacta y Genera Ingresos</h3>
+                <p>Nuestra comunidad está llena de líderes. Si buscas desarrollo personal y la oportunidad de generar <strong>ingresos extras (CLP $100.000 - $300.000)</strong> ayudando a otros, este es tu lugar.</p>
+            </div>
+            <div class="leadership-item">
+                <h3>Aprendizaje de Habilidades</h3>
+                <p>Aumenta tu liderazgo, aprende sobre marketing, comunicación efectiva y virtud. Convierte tu éxito en bienestar en un negocio con propósito.</p>
+            </div>
+        </div>
+
+        <!-- BOTÓN DE INSTAGRAM SOLICITADO -->
+        <a href="https://www.instagram.com/alvarosalinas_hbl?igsh=MXh0Y2ZhYWhqcTFvdQ==" target="_blank" class="cta-button cta-animated cta-instagram">
+            ¡Sígueme en Instagram! 📸
+        </a>
+
+        <!-- BOTÓN CTA 4 -->
+        <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20estoy%20lista%20para%20formarme%20como%20Coach%20de%20Bienestar%20y%20conocer%20la%20oportunidad%20de%20ingresos." class="cta-button cta-primary cta-animated">
+            ESTOY LISTA PARA FORMARME COMO COACH DE BIENESTAR
+        </a>
+
+        <!-- FOOTER (Estructura original restaurada) -->
+        <footer class="footer">
+            <p>&copy; 2025 Transformación 360°. Todos los derechos reservados.</p>
+            <p>Contacto: <a href="https://api.whatsapp.com/send?phone=56981590912">WhatsApp +56 9 8159 0912</a></p>
+        </footer>
+    </section>
+
+    <!-- ESTRUCTURA DEL MODAL (GALERÍA POP-UP) -->
+    <div id="resultsModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-button">&times;</button>
+            <h2 class="modal-title">¡20 Transformaciones Más!</h2>
+            <p class="subtitle" style="color: #666;">Inspírate con el poder de nuestro sistema.</p>
+            
+            <div class="modal-gallery-grid" id="modal-gallery">
+                <!-- Las imágenes se insertan dinámicamente aquí -->
+            </div>
+
+            <!-- CTA DENTRO DEL MODAL -->
+            <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20vi%20la%20galer%C3%ADa%20completa%20y%20quiero%20comenzar%20mi%20plan%20ahora%20mismo!" class="cta-button modal-cta cta-secondary cta-animated">
+                ¡Quiero comenzar con mi plan ahora!
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- El script countdown.js es el que da vida al reloj -->
+    <script src="assets/js/countdown.js"></script>
+    <script>
+        // Array de resultados (del 4 al 23)
+        const totalResults = 20;
+        const resultsData = Array.from({ length: totalResults }, (_, i) => ({
+            id: i + 4,
+            caption: `Transformación ${i + 4}`
+        }));
+
+        // Función para poblar la galería y el carrusel
+        function populateGalleries() {
+            const modalGallery = document.getElementById('modal-gallery');
+            const carousel = document.getElementById('results-carousel');
+            
+            if (!modalGallery || !carousel) {
+                console.error("No se encontraron los contenedores de galería o carrusel.");
+                return;
+            }
+
+            let carouselContent = '';
+            let modalContent = '';
+
+            // 1. Crear el contenido del Carrusel (Duplicado para loop infinito)
+            for (let k = 0; k < 2; k++) { // Duplicar para el loop
+                resultsData.forEach(result => {
+                    carouselContent += `
+                        <div class="carousel-item">
+                            <img src="assets/images/resultado_${result.id}.jpg" alt="Resultado ${result.id}">
+                        </div>
+                    `;
+                });
+            }
+            carousel.innerHTML = carouselContent;
+
+            // 2. Crear el contenido del Modal (Sin duplicar)
+            resultsData.forEach(result => {
+                modalContent += `
+                    <div class="result-card">
+                        <img src="assets/images/resultado_${result.id}.jpg" alt="Resultado ${result.id}">
+                        <p class="caption">${result.caption}</p>
+                    </div>
+                `;
+            });
+            modalGallery.innerHTML = modalContent;
+        }
+
+        // Lógica para el MODAL (POP-UP)
+        const modal = document.getElementById('resultsModal');
+        const openBtn = document.getElementById('openModalBtn');
+        const closeBtn = document.querySelector('#resultsModal .close-button'); // Apunta solo al botón dentro del modal
+
+        window.onload = function() {
+            populateGalleries(); // Poblar las galerías al cargar
+            
+            // Asegurar que los listeners estén adjuntos después de la carga
+            if (openBtn && modal && closeBtn) {
+                openBtn.addEventListener('click', function() {
+                    modal.style.display = 'flex'; // Abre el modal
+                    document.body.style.overflow = 'hidden'; // Evita el scroll del fondo
+                });
+
+                closeBtn.addEventListener('click', function() {
+                    modal.style.display = 'none'; // Cierra el modal
+                    document.body.style.overflow = 'auto'; // Restaura el scroll
+                });
+
+                window.addEventListener('click', function(event) {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            } else {
+                console.error("No se encontraron elementos esenciales del modal.");
+            }
+        }
+    </script>
+</body>
+</html>
