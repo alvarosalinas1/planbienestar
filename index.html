@@ -16,6 +16,7 @@
             --color-bg-light: #f5f5f5; /* Gris claro */
             --color-text-dark: #2c3e50;
             --color-text-light: #ffffff;
+            --color-moss-green: #aed581; /* Verde Musgo Claro para el marco */
         }
 
         body {
@@ -66,7 +67,7 @@
         h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; text-align: center; }
         .subtitle { font-size: 1.1rem; opacity: 0.9; }
 
-        /* --- ESTILOS DE BOTONES (CTAs) --- */
+        /* --- ESTILOS DE BOTONES (CTAs) Y ANIMACIÓN POP-UP --- */
         .cta-button {
             display: block;
             width: 90%;
@@ -78,12 +79,16 @@
             font-weight: 700;
             text-decoration: none;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            /* Sombra difuminada */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease-out;
+            border: none;
+            cursor: pointer;
         }
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        /* Animación Pop-up Suave */
+        .cta-button.cta-animated:hover, .cta-button.cta-animated:active {
+            transform: scale(1.03); /* Ligeramente más grande */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
         }
         /* Color para Bloque 1 (Hero) y 6 (Liderazgo) - Contraste con Naranja/Gris */
         .cta-primary {
@@ -99,120 +104,175 @@
             background-color: #f39c12; /* Amarillo/Dorado */
             color: var(--color-text-dark);
         }
-
-        /* --- ESTILOS DE PRECIO --- */
-        .original-price {
-            font-size: 1.5rem;
-            text-decoration: line-through;
-            opacity: 0.7;
-            display: block;
-            margin-bottom: 5px;
+        
+        /* Estilo para el texto small-print y negrita */
+        .small-print {
+            font-size: 0.9rem;
+            margin-top: -10px;
+            margin-bottom: 20px;
             font-weight: 400;
         }
-        .discount-highlight {
-            font-size: 3rem;
-            font-weight: 900;
-            margin: 0;
-            line-height: 1.2;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        .small-print strong {
+            font-weight: 700;
         }
 
-        /* --- INFOGRAMA Y ASESORÍA --- */
-        .advisor-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-text-light);
-            margin: 15px 0 25px;
-            padding: 5px 15px;
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            display: inline-block;
-        }
-        .infogram-container {
-            background-color: #ffffff;
+        /* --- MARCO DE BENEFICIOS --- */
+        .benefits-header {
+            background-color: var(--color-moss-green);
             color: var(--color-text-dark);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            margin: 20px auto 30px;
-            max-width: 95%;
+            padding: 15px 20px;
+            border: 3px double var(--color-text-dark); /* Doble orilla */
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 0 auto 20px;
+            max-width: 90%;
+            text-align: center;
         }
-        .infogram-problem, .infogram-solution { font-size: 1.1rem; }
-        .infogram-problem { color: #c0392b; }
-        .infogram-solution { font-weight: 900; color: #27ae60; }
-        
-        /* --- ESTILOS DE LISTA DE BENEFICIOS (BLOQUE 3) --- */
-        /* Asegura que la lista esté centrada pero los ítems estén alineados a la izquierda */
+        /* --- LISTA DE BENEFICIOS (BLOQUE 3) --- */
         .benefits-list {
             max-width: 600px;
-            margin: 20px auto;
+            margin: 0px auto;
             text-align: center;
         }
         .benefits-list ul {
-            list-style: none; /* Quitamos los checks */
+            list-style: none;
             padding: 0;
             margin-top: 20px;
-            text-align: left; /* Alinea los ítems a la izquierda DENTRO del contenedor centrado */
+            text-align: left; 
             width: 100%;
         }
         .benefits-list ul li {
             margin-bottom: 10px;
             font-size: 1.1rem;
             line-height: 1.4;
+            /* Usa el checkmark directamente en el HTML, pero asegúrate de que el padding no lo empuje */
+        }
+        .benefits-list ul li span {
+             margin-right: 8px; /* Espacio para el checkmark */
+             color: #2ecc71; /* Color verde para el check */
+             font-weight: 700;
         }
 
-        /* --- GALLERY Y PROGRAMA GRID --- */
-        .gallery-grid, .program-grid, .leadership-grid {
-            display: grid;
-            gap: 20px;
-            padding: 20px 0;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-        .program-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-        .result-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* --- MI HISTORIA --- */
-        .story-content {
+        /* --- CARRUSEL Y FLECHAS ANIMADAS (BLOQUE 2) --- */
+        .carousel-container {
+            position: relative;
             max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+            margin: 30px auto;
+            overflow: hidden;
+            padding: 10px 0;
         }
-        .profile-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
+        .carousel {
+            display: flex;
+            animation: slide 30s linear infinite; /* Animación de deslizamiento infinito */
+            width: max-content; /* Permite que el contenido se extienda */
+        }
+        .carousel-item {
+            flex-shrink: 0;
+            margin-right: 15px;
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            margin-bottom: 20px;
-            border: 5px solid var(--color-text-light);
+        }
+        @keyframes slide {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); } /* Se desliza la mitad para que sea un loop infinito */
         }
 
-        /* --- FOOTER --- */
-        .footer {
-            padding: 20px;
+        .arrow-animation {
             text-align: center;
-            background-color: var(--color-bg-light); /* En Bloque 6 */
-            color: var(--color-text-dark);
-            font-size: 0.9rem;
-            margin-top: 30px; /* Separación del botón final */
+            margin: 20px 0;
+            height: 40px;
+            line-height: 1;
         }
-        .footer p { margin: 5px 0; }
+        .arrow-animation span {
+            display: inline-block;
+            font-size: 2rem;
+            color: var(--color-primary);
+            animation: move-up-down 1.5s infinite alternate;
+            margin: 0 5px;
+        }
+        .arrow-animation span:nth-child(2) { animation-delay: 0.2s; }
+        .arrow-animation span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes move-up-down {
+            from { transform: translateY(10px); opacity: 0.5; }
+            to { transform: translateY(-10px); opacity: 1; }
+        }
+
+        /* --- OTROS ESTILOS (Precio, Infograma, Historia) --- */
+        /* [Mantener estilos previos para precio, infograma, héroe, etc.] */
+        .original-price { font-size: 1.5rem; text-decoration: line-through; opacity: 0.7; display: block; margin-bottom: 5px; font-weight: 400; }
+        .discount-highlight { font-size: 3rem; font-weight: 900; margin: 0; line-height: 1.2; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+        .infogram-container { background-color: #ffffff; color: var(--color-text-dark); padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); margin: 20px auto 30px; max-width: 95%; }
+        .infogram-problem { color: #c0392b; }
+        .infogram-solution { font-weight: 900; color: #27ae60; }
+        .gallery-grid { display: grid; gap: 20px; padding: 20px 0; max-width: 1000px; margin: 0 auto; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+        .result-card img { width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        .story-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .profile-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 5px solid var(--color-text-light); }
+        .countdown { font-size: 2.5rem; font-weight: 900; margin: 20px auto; color: #f1c40f; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); max-width: 300px; }
+        .footer { padding: 20px; text-align: center; background-color: var(--color-bg-light); color: var(--color-text-dark); font-size: 0.9rem; margin-top: 30px; }
         .footer a { color: var(--color-primary); text-decoration: none; }
-        
-        /* Estilos específicos del contador (Requerido para que el reloj sea visible) */
-        .countdown {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin: 20px auto;
-            color: #f1c40f; /* Amarillo para contraste en fondo naranja */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-            max-width: 300px;
+
+
+        /* --- MODAL (GALERÍA POP-UP) --- */
+        .modal-overlay {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 1000px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .modal-gallery-grid .result-card {
+            text-align: center;
+        }
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #aaa;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+            text-decoration: none;
         }
     </style>
     
@@ -238,7 +298,7 @@
             </div>
             
             <!-- BOTÓN CTA 1 -->
-            <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20quiero%20iniciar%20mi%20plan%20de%20Transformación%20ahora!" class="cta-button cta-primary">
+            <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20quiero%20iniciar%20mi%20plan%20de%20Transformación%20ahora!" class="cta-button cta-primary cta-animated">
                 Quiero iniciar mi plan de Transformación ⭐
             </a>
             
@@ -258,11 +318,26 @@
             <div class="result-card"><img src="assets/images/resultado_2.jpg" alt="Transformación Antes y Después 2"><p class="caption">Adiós a la grasa, hola a la energía.</p></div>
             <div class="result-card"><img src="assets/images/resultado_3.jpg" alt="Transformación Antes y Después 3"><p class="caption">Transformación completa de cuerpo y mente.</p></div>
         </div>
+        
+        <!-- Flechas Animadas -->
+        <div class="arrow-animation">
+            <span>&#9650;</span>
+            <span>&#9650;</span>
+            <span>&#9650;</span>
+        </div>
 
         <!-- BOTÓN PARA ABRIR LA GALERÍA MODAL -->
-        <button id="openModalBtn" class="cta-button cta-tertiary" style="margin-top: 30px;">
-            Ver Más Resultados (¡20 Historias Adicionales!)
+        <button id="openModalBtn" class="cta-button cta-tertiary cta-animated" style="margin-top: 10px;">
+            Ver 20 resultados más del programa
         </button>
+        
+        <!-- Carrusel de resultados pequeños -->
+        <div class="carousel-container">
+            <!-- Duplicar el contenido para un loop infinito suave -->
+            <div class="carousel" id="results-carousel">
+                <!-- Se poblará con JS al cargar la página -->
+            </div>
+        </div>
 
         <!-- 2.2 SECCIÓN DEL PROGRAMA -->
         <h2 style="margin-top: 40px;">Tu Transformación Comienza Hoy: Esto Incluye Tu Plan</h2>
@@ -286,7 +361,7 @@
         </div>
 
         <!-- BOTÓN CTA 2 -->
-        <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20quiero%20obtener%20mi%20propio%20resultado%20como%20los%20que%20vi%20en%20la%20página." class="cta-button cta-secondary">
+        <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20quiero%20obtener%20mi%20propio%20resultado%20como%20los%20que%20vi%20en%20la%20página." class="cta-button cta-secondary cta-animated">
             Quiero mi propio resultado
         </a>
     </section>
@@ -304,20 +379,23 @@
             
             <!-- LISTA DE ALTO VALOR (CENTRALIZADA CON ÍTEMS A LA IZQUIERDA) -->
             <div class="benefits-list">
-                <p class="value-statement" style="font-weight: 700; font-size: 1.2rem; margin-top: 30px;">Esto es lo que obtienes con tu plan PROBADO para resultados reales:</p>
+                <!-- Marco con Doble Orilla y Fondo Verde Musgo -->
+                <p class="benefits-header">Esto es lo que obtienes con tu plan PROBADO para resultados reales:</p>
+                
                 <ul>
-                    <li><strong>PLAN PROBADO:</strong> Garantizado para bajar en promedio <strong>2 a 3 kg por semana.</strong></li>
-                    <li><strong>24/7 Plataforma Nutricional:</strong> Recetas saludables, rutinas de ejercicios profesionales, <strong>actualizadas mes a mes.</strong></li>
-                    <li><strong>Asesor con Atención Personalizada:</strong> Soporte directo para resolver dudas y optimizar tu progreso.</li>
-                    <li><strong>Reto Exclusivo de 21 Días:</strong> Incorporación inmediata a nuestra comunidad para asegurar resultados físicos rápidos y en grupo.</li>
-                    <li><strong>Scanner de Bioimpedancia:</strong> Medición de grasa y músculo valorada en <strong>$50.000 CLP</strong> (incluido sin costo extra).</li>
-                    <li><strong>Cursos Online de Nutrición en Vivo:</strong> Clases semanales por Zoom para que aprendas a comer y domines la nutrición.</li>
-                    <li><strong>Suministro de Suplementos Nutricionales:</strong> El soporte de nutrientes esencial para acelerar tu metabolismo y energía.</li>
-                    <li><strong>Aplicación de Rutinas Profesionales:</strong> Acceso fácil a tus entrenamientos desde cualquier dispositivo.</li>
-                    <li><strong>Actividades Presenciales:</strong> Eventos para construir tu mejor versión y conectar con la comunidad.</li>
-                    <li>Oxida la grasa, controla tu peso de forma guiada y <strong>sostenible.</strong></li>
-                    <li>Mejora drásticamente tu digestión, aumenta tu energía y vitalidad diaria.</li>
-                    <li>Optimiza tu enfoque, concentración y sistemas cognitivos.</li>
+                    <!-- Se reintroducen los checkmarks como span para estilizar -->
+                    <li><span>✅</span> <strong>PLAN PROBADO:</strong> Garantizado para bajar en promedio <strong>2 a 3 kg por semana.</strong></li>
+                    <li><span>✅</span> <strong>24/7 Plataforma Nutricional:</strong> Recetas saludables, rutinas de ejercicios profesionales, <strong>actualizadas mes a mes.</strong></li>
+                    <li><span>✅</span> <strong>Asesor con Atención Personalizada:</strong> Soporte directo para resolver dudas y optimizar tu progreso.</li>
+                    <li><span>✅</span> <strong>Reto Exclusivo de 21 Días:</strong> Incorporación inmediata a nuestra comunidad para asegurar resultados físicos rápidos y en grupo.</li>
+                    <li><span>✅</span> <strong>Scanner de Bioimpedancia:</strong> Medición de grasa y músculo valorada en <strong>$50.000 CLP</strong> (incluido sin costo extra).</li>
+                    <li><span>✅</span> <strong>Cursos Online de Nutrición en Vivo:</strong> Clases semanales por Zoom para que aprendas a comer y domines la nutrición.</li>
+                    <li><span>✅</span> <strong>Suministro de Suplementos Nutricionales:</strong> El soporte de nutrientes esencial para acelerar tu metabolismo y energía.</li>
+                    <li><span>✅</span> <strong>Aplicación de Rutinas Profesionales:</strong> Acceso fácil a tus entrenamientos desde cualquier dispositivo.</li>
+                    <li><span>✅</span> <strong>Actividades Presenciales:</strong> Eventos para construir tu mejor versión y conectar con la comunidad.</li>
+                    <li><span>✅</span> Oxida la grasa, controla tu peso de forma guiada y <strong>sostenible.</strong></li>
+                    <li><span>✅</span> Mejora drásticamente tu digestión, aumenta tu energía y vitalidad diaria.</li>
+                    <li><span>✅</span> Optimiza tu enfoque, concentración y sistemas cognitivos.</li>
                 </ul>
             </div>
         </div>
@@ -333,10 +411,11 @@
             </div>
 
             <!-- BOTÓN CTA 3 -->
-            <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20voy%20a%20aprovechar%20la%20promoción%20de%20$115.000%20CLP." class="cta-button cta-secondary">
+            <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20voy%20a%20aprovechar%20la%20promoción%20de%20$115.000%20CLP." class="cta-button cta-secondary cta-animated">
                 Voy a aprovechar la promoción 🔥
             </a>
-            <p class="small-print" style="color: #fff;">Haz clic para iniciar tu compra a través de WhatsApp. **¡ENVÍO A TODO CHILE!** Cupos Limitados.</p>
+            <!-- Se asegura que el texto entre asteriscos esté en negrita -->
+            <p class="small-print" style="color: #fff;">Haz clic para iniciar tu compra a través de WhatsApp. <strong>¡ENVÍO A TODO CHILE!</strong> Cupos Limitados.</p>
         </div>
     </section>
 
@@ -344,54 +423,7 @@
     <section class="section section-mint">
         <div class="story-content">
             <img src="assets/images/mi_foto.jpg" alt="Tu Foto de Perfil" class="profile-photo">
-            <h2>Mi Historia: De la Adicción a la Vitalidad</h2> <!-- FRASE ACTUALIZADA -->
+            <h2>Mi Historia: De la Adicción a la Vitalidad</h2>
             <p>Sé lo que es sentirse atrapado por la comida. Mi lucha no era solo por el peso; era la <strong>ansiedad de buscar galletas</strong> incluso cuando no quedaban, la <strong>vergüenza social</strong> de la mala digestión y, peor aún, los <strong>dolores abdominales paralizantes</strong> que me quitaban el aliento. Sabía que debía hacer ejercicio, pero mi cuerpo simplemente no tenía la <strong>energía</strong> para empezar.</p>
             <p><strong>No es tu culpa.</strong> El problema no eres tú, es el sistema que aún no conoces.</p>
-            <p>Encontré una <strong>comunidad y un sistema activo</strong> que renovó mi vida. Mi transformación fue total: de la fatiga crónica a una <strong>explosión de energía</strong>, la digestión mejoró y mi <strong>confianza</strong> se disparó.</p>
-            <p>Mi pasión es el <strong>liderazgo</strong> y la <strong>enseñanza</strong>. Como padre, descubrí que guiar a otros a su mejor versión es mi mayor gratificación. Hoy, te ofrezco ese mismo camino. Si sueñas con esa <strong>vitalidad</strong> y estás listo para un <strong>desarrollo personal profundo</strong>, te guiaré con las herramientas que te harán <strong>independiente</strong> y exitoso. La <strong>confianza</strong> es la base de todo.</p>
-        </div>
-    </section>
-
-    <!-- BLOQUE 6 - LIDERAZGO Y FOOTER - Fondo Gris Claro -->
-    <section class="section section-f5">
-        <h2 style="margin-bottom: 30px;">Un Camino Que No Termina en Ti: Liderazgo y Desarrollo</h2>
-        <div class="leadership-grid">
-            <div class="leadership-item">
-                <h3>Impacta y Genera Ingresos</h3>
-                <p>Nuestra comunidad está llena de líderes. Si buscas desarrollo personal y la oportunidad de generar <strong>ingresos extras (CLP $100.000 - $300.000)</strong> ayudando a otros, este es tu lugar.</p>
-            </div>
-            <div class="leadership-item">
-                <h3>Aprendizaje de Habilidades</h3>
-                <p>Aumenta tu liderazgo, aprende sobre marketing, comunicación efectiva y virtud. Convierte tu éxito en bienestar en un negocio con propósito.</p>
-            </div>
-        </div>
-
-        <!-- BOTÓN CTA 4 -->
-        <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20estoy%20lista%20para%20formarme%20como%20Coach%20de%20Bienestar%20y%20conocer%20la%20oportunidad%20de%20ingresos." class="cta-button cta-primary">
-            ESTOY LISTA PARA FORMARME COMO COACH DE BIENESTAR
-        </a>
-
-        <!-- FOOTER -->
-        <footer class="footer">
-            <p>&copy; 2025 Transformación 360°. Todos los derechos reservados.</p>
-            <p>Contacto: <a href="https://api.whatsapp.com/send?phone=56981590912">WhatsApp +56 9 8159 0912</a></p>
-        </footer>
-    </section>
-
-    <!-- ESTRUCTURA DEL MODAL (GALERÍA POP-UP) - Sin cambios, se mantiene al final -->
-    <div id="resultsModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="close-button">&times;</button>
-            <h2 class="modal-title">¡20 Transformaciones Más!</h2>
-            <p class="subtitle" style="color: #666;">Inspírate con el poder de nuestro sistema.</p>
-            
-            <div class="modal-gallery-grid">
-                <!-- Fotos adicionales del modal -->
-                <div class="result-card"><img src="assets/images/resultado_4.jpg" alt="Resultado 4"><p class="caption">¡Impacto total!</p></div>
-                <div class="result-card"><img src="assets/images/resultado_5.jpg" alt="Resultado 5"><p class="caption">Más vitalidad.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_6.jpg" alt="Resultado 6"><p class="caption">Logro increíble.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_7.jpg" alt="Resultado 7"><p class="caption">Cambio de vida.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_8.jpg" alt="Resultado 8"><p class="caption">Transformación física.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_9.jpg" alt="Resultado 9"><p class="caption">Pérdida de peso.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_10.jpg" alt="Resultado 10"><p class="caption">Aumento de energía.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_11.jpg" alt="Resultado 11">
+            <p>Encontré una <strong>comunidad y un sistema activo</strong
