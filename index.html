@@ -1,44 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- ¡ESTA LÍNEA ES LA CLAVE PARA LAS TILDES Y LA Ñ! -->
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transformación 360° | Programa de Bienestar y Liderazgo</title>
     <!-- Incluimos una fuente limpia y elegante de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     
-    <!-- CSS AGREGADO AQUÍ PARA DEFINIR LA IMAGEN DE FONDO DEL HERO Y EL ESTILO -->
+    <!-- CSS AGREGADO AQUÍ PARA DEFINIR LA IMAGEN DE FONDO DEL HERO Y LOS NUEVOS COLORES DE SECCIÓN -->
     <style>
-        .hero-section {
-            /* 1. Usar linear-gradient como capa de color semi-transparente sobre la imagen. */
-            /* Usa el color original (E07434) como referencia para mantener la marca. */
-            background-image: linear-gradient(rgba(224, 116, 52, 0.75), rgba(224, 116, 52, 0.75)), url('assets/images/hero.jpg');
-            
-            /* 2. Asegura que la imagen cubra todo el espacio. */
+        /* Variables y Base Styling */
+        :root {
+            --color-primary: #E27138; /* Naranja fuerte */
+            --color-secondary: #769E94; /* Verde Menta */
+            --color-bg-light: #f5f5f5; /* Gris claro */
+            --color-text-dark: #2c3e50;
+            --color-text-light: #ffffff;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .section {
+            padding: 40px 20px;
+        }
+
+        /* --- Secciones con nuevos colores de fondo --- */
+        .section-f5 {
+            background-color: var(--color-bg-light);
+            color: var(--color-text-dark);
+        }
+        .section-orange {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+        }
+        .section-mint {
+            background-color: var(--color-secondary);
+            color: var(--color-text-light);
+        }
+
+        /* --- HERO SECTION BASE (IMAGEN + GRADIENTE) --- */
+        .hero-section, .section-price-hero {
+            background-image: linear-gradient(rgba(226, 113, 56, 0.8), rgba(226, 113, 56, 0.8)), url('assets/images/hero.jpg');
             background-size: cover;
-            
-            /* 3. Centra la imagen. */
             background-position: center;
-            
-            /* 4. Asegura que el texto se vea blanco sobre la imagen oscura. */
-            color: #ffffff;
-            
-            /* 5. Altura mínima para que la imagen se vea bien en pantallas grandes y móviles */
-            min-height: 85vh; 
+            color: var(--color-text-light);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            min-height: 50vh; 
         }
-        
+
         .hero-content {
             padding: 20px;
             max-width: 900px;
         }
+        
+        h1 { font-size: 2.2rem; font-weight: 900; margin-bottom: 20px; line-height: 1.2; }
+        h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; text-align: center; }
+        .subtitle { font-size: 1.1rem; opacity: 0.9; }
 
-        /* Estilo para el precio tachado */
+        /* --- ESTILOS DE BOTONES (CTAs) --- */
+        .cta-button {
+            display: block;
+            width: 90%;
+            max-width: 450px;
+            margin: 20px auto;
+            padding: 15px 20px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        /* Color para Bloque 1 (Hero) y 6 (Liderazgo) - Contraste con Naranja/Gris */
+        .cta-primary {
+            background-color: #2ecc71; /* Verde brillante */
+            color: var(--color-text-light);
+        }
+        /* Color para Bloque 2 (Resultados) y 4 (Precio) - Contraste con Gris/Naranja */
+        .cta-secondary {
+            background-color: #3498db; /* Azul */
+            color: var(--color-text-light);
+        }
+        .cta-tertiary {
+            background-color: #f39c12; /* Amarillo/Dorado */
+            color: var(--color-text-dark);
+        }
+
+        /* --- ESTILOS DE PRECIO --- */
         .original-price {
             font-size: 1.5rem;
             text-decoration: line-through;
@@ -47,219 +109,163 @@
             margin-bottom: 5px;
             font-weight: 400;
         }
-
-        /* Estilo para el gran descuento (letra marcada) */
         .discount-highlight {
-            font-size: 2.8rem; /* Tamaño más grande para la letra marcada */
-            font-weight: 900; /* Peso extra bold */
+            font-size: 3rem;
+            font-weight: 900;
             margin: 0;
             line-height: 1.2;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para que destaque */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* Contenedor del precio para centrar ambos elementos */
-        .price-container {
-            margin: 20px auto 10px;
-        }
-        
-        /* --- Estilos del Nuevo Asesoramiento --- */
+        /* --- INFOGRAMA Y ASESORÍA --- */
         .advisor-text {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #ffffff;
+            color: var(--color-text-light);
             margin: 15px 0 25px;
             padding: 5px 15px;
             background-color: rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             display: inline-block;
         }
-
-        /* --- Estilos del Infograma (Solo texto) --- */
         .infogram-container {
-            display: block; 
-            text-align: center;
-            background-color: #ffffff; /* Fondo blanco */
-            color: #2c3e50; /* Texto oscuro */
+            background-color: #ffffff;
+            color: var(--color-text-dark);
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             margin: 20px auto 30px;
             max-width: 95%;
         }
-
-        @media (min-width: 600px) {
-            .infogram-container {
-                max-width: 80%;
-            }
-        }
-
-        .infogram-text {
+        .infogram-problem, .infogram-solution { font-size: 1.1rem; }
+        .infogram-problem { color: #c0392b; }
+        .infogram-solution { font-weight: 900; color: #27ae60; }
+        
+        /* --- ESTILOS DE LISTA DE BENEFICIOS (BLOQUE 3) --- */
+        /* Asegura que la lista esté centrada pero los ítems estén alineados a la izquierda */
+        .benefits-list {
+            max-width: 600px;
+            margin: 20px auto;
             text-align: center;
         }
-
-        .infogram-text p {
-            font-size: 1.1rem;
-            margin: 5px 0;
-            line-height: 1.4;
-        }
-
-        .infogram-problem {
-            font-weight: 700;
-            color: #c0392b; /* Rojo para el problema */
-        }
-
-        .infogram-solution {
-            font-weight: 900;
-            color: #27ae60; /* Verde para la solución */
-        }
-        
-        /* Nuevo estilo para la sección fuera del Hero que contiene la urgencia y beneficios */
-        .cta-benefits-section {
-            background-color: #f7f7f7; /* Un color de fondo claro para separarlo del Hero */
-            padding: 30px 20px;
-            text-align: center; /* Centra el contenido como el reloj y el CTA */
-        }
-        
-        /* Aseguramos que el texto del contador de urgencia sea legible */
-        .urgency-text {
-            color: #c0392b; /* Rojo para resaltar la urgencia */
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin-bottom: 15px;
-        }
-        
-        /* Estilos para centrar la lista pero alinear los ítems a la izquierda */
-        .benefits-list {
-            max-width: 600px; /* Ancho máximo para que no se extienda demasiado en desktop */
-            margin: 0 auto; /* Centra el contenedor de la lista */
-            text-align: center; /* Asegura que el título de la lista esté centrado */
-        }
-
         .benefits-list ul {
-            list-style: none; /* Quitamos los puntos por defecto */
+            list-style: none; /* Quitamos los checks */
             padding: 0;
             margin-top: 20px;
-            text-align: left; /* Alinea los ítems de la lista a la izquierda DENTRO del contenedor centrado */
+            text-align: left; /* Alinea los ítems a la izquierda DENTRO del contenedor centrado */
             width: 100%;
         }
-
         .benefits-list ul li {
             margin-bottom: 10px;
             font-size: 1.1rem;
             line-height: 1.4;
         }
+
+        /* --- GALLERY Y PROGRAMA GRID --- */
+        .gallery-grid, .program-grid, .leadership-grid {
+            display: grid;
+            gap: 20px;
+            padding: 20px 0;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+        .program-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .result-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- MI HISTORIA --- */
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid var(--color-text-light);
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background-color: var(--color-bg-light); /* En Bloque 6 */
+            color: var(--color-text-dark);
+            font-size: 0.9rem;
+            margin-top: 30px; /* Separación del botón final */
+        }
+        .footer p { margin: 5px 0; }
+        .footer a { color: var(--color-primary); text-decoration: none; }
+        
+        /* Estilos específicos del contador (Requerido para que el reloj sea visible) */
+        .countdown {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 20px auto;
+            color: #f1c40f; /* Amarillo para contraste en fondo naranja */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            max-width: 300px;
+        }
     </style>
     
     <!-- ⚠️ AQUÍ DEBES PEGAR TUS CÓDIGOS DE SEGUIMIENTO -->
-    <!-- Coloca tu código de Meta Píxel (Base Code) aquí -->
-    <!-- Coloca tu código de Google Analytics 4 (GTAG) aquí -->
     
 </head>
 <body>
 
-    <!-- CABECERA PRINCIPAL (HERO) - Título, Asesoría, Infograma (solo texto), Precio -->
-    <header class="hero-section">
+    <!-- BLOQUE 1 (HERO) - Contenido Principal, Centrado, CTA Principal -->
+    <header class="hero-section section">
         <div class="hero-content">
-            <!-- 1. SUBTÍTULO (FRASE ELIMINADA) -->
-            <!-- <p class="subtitle">¡Finalmente, la solución para el bienestar integral llegó a Chile!</p> -->
             
-            <!-- 2. H1 PRINCIPAL -->
+            <!-- H1 PRINCIPAL -->
             <h1>Despierta tu Energía y Logra tu Peso Ideal: Asesoría Nutricional y Ejercicio.</h1>
             
-            <!-- 3. NUEVO TEXTO ASESORÍA -->
+            <!-- TEXTO ASESORÍA -->
             <p class="advisor-text">Te Asesoramos en Todo Tu Proceso</p>
 
-            <!-- 4. INFOGRAMA VISUAL (Solo texto destacado) -->
-            <div class="infogram-container">
-                <div class="infogram-text">
-                    <p class="infogram-problem">¿Quieres mejorar tu <strong>bienestar</strong>, pero no sabes por dónde empezar?</p>
-                    <p class="infogram-solution">¡Tenemos la <strong>SOLUCIÓN!</strong> Un sistema <strong>COMPROBADO</strong> para transformar tu cuerpo y energía.</p>
-                </div>
+            <!-- INFOGRAMA VISUAL (Solo texto destacado) -->
+            <div class="infogram-container" style="max-width: 700px;">
+                <p class="infogram-problem">¿Quieres mejorar tu <strong>bienestar</strong>, pero no sabes por dónde empezar?</p>
+                <p class="infogram-solution">¡Tenemos la <strong>SOLUCIÓN!</strong> Un sistema <strong>COMPROBADO</strong> para transformar tu cuerpo y energía</p>
             </div>
             
-            <!-- 5. PRECIO DE REFERENCIA Y DESCUENTO -->
-            <div class="price-container">
-                <span class="original-price">VALOR NORMAL SOBRE $350.000 CLP</span>
-                <p class="discount-highlight">¡SOLO HOY $115.000 CLP!</p>
-            </div>
+            <!-- BOTÓN CTA 1 -->
+            <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20quiero%20iniciar%20mi%20plan%20de%20Transformación%20ahora!" class="cta-button cta-primary">
+                Quiero iniciar mi plan de Transformación ⭐
+            </a>
+            
         </div>
     </header>
 
-    <!-- NUEVA SECCIÓN: URGENCIA (RELOJ), CTA Y BENEFICIOS - Todo centrado, lista con ítems a la izquierda -->
-    <section class="cta-benefits-section">
-        <div class="hero-content" style="max-width: 900px; padding: 0;">
-            
-            <!-- CONTADOR DE URGENCIA Y OFERTA (CENTRADOS) -->
-            <div class="urgency-box">
-                <p class="urgency-text">OFERTA DISPONIBLE por tiempo limitado</p>
-                <div class="countdown" id="countdown"></div> <!-- RELOJ CENTRADO -->
-                <p class="bonus-text">Compra ahora y accede a <strong>1 Clase Gratuita de Ejercicios</strong> y <strong>4 Clases Gratuitas de Nutrición</strong> presencial.</p>
-            </div>
-
-            <!-- BOTÓN CTA A WHATSAPP (CENTRADO) -->
-            <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20estoy%20muy%20interesada%20en%20comprar%20el%20plan%20para%20mejorar%20el%20estilo%20de%20vida" class="cta-button">
-                ¡Sí, Quiero Mi Plan por $115.000 CLP y mis 5 Clases GRATIS!
-            </a>
-            
-            <!-- TEXTO PEQUEÑO DE ENVÍO Y CUPOS (CENTRADO) -->
-            <p class="small-print">Haz clic para iniciar tu compra a través de WhatsApp. **¡ENVÍO A TODO CHILE!** Cupos Limitados.</p>
-
-            <!-- LISTA DE ALTO VALOR (CENTRALIZADA CON ÍTEMS A LA IZQUIERDA) -->
-            <div class="benefits-list">
-                <p class="value-statement">Esto es lo que obtienes con tu plan PROBADO para resultados reales:</p>
-                <ul>
-                    <!-- Ítems sin el checkmark, list-style: none aplicado en CSS, alineación a la izquierda aplicada en CSS -->
-                    <li><strong>PLAN PROBADO:</strong> Garantizado para bajar en promedio <strong>2 a 3 kg por semana.</strong></li>
-                    <li><strong>24/7 Plataforma Nutricional:</strong> Recetas saludables, rutinas de ejercicios profesionales, <strong>actualizadas mes a mes.</strong></li>
-                    <li><strong>Asesor con Atención Personalizada:</strong> Soporte directo para resolver dudas y optimizar tu progreso.</li>
-                    <li><strong>Reto Exclusivo de 21 Días:</strong> Incorporación inmediata a nuestra comunidad para asegurar resultados físicos rápidos y en grupo.</li>
-                    <li><strong>Scanner de Bioimpedancia:</strong> Medición de grasa y músculo valorada en <strong>$50.000 CLP</strong> (incluido sin costo extra).</li>
-                    <li><strong>Cursos Online de Nutrición en Vivo:</strong> Clases semanales por Zoom para que aprendas a comer y domines la nutrición.</li>
-                    <li><strong>Suministro de Suplementos Nutricionales:</strong> El soporte de nutrientes esencial para acelerar tu metabolismo y energía.</li>
-                    <li><strong>Aplicación de Rutinas Profesionales:</strong> Acceso fácil a tus entrenamientos desde cualquier dispositivo.</li>
-                    <li><strong>Actividades Presenciales:</strong> Eventos para construir tu mejor versión y conectar con la comunidad.</li>
-                    <li>Oxida la grasa, controla tu peso de forma guiada y <strong>sostenible.</strong></li>
-                    <li>Mejora drásticamente tu digestión, aumenta tu energía y vitalidad diaria.</li>
-                    <li>Optimiza tu enfoque, concentración y sistemas cognitivos.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. SECCIÓN DE RESULTADOS (GALERÍA INICIAL) - ORDEN SIN CAMBIOS -->
-    <section class="section results-section">
+    <!-- BLOQUE 2 - RESULTADOS Y PROGRAMA - Fondo Gris Claro -->
+    <section class="section section-f5">
+        
+        <!-- 2.1 SECCIÓN DE RESULTADOS -->
         <h2>Resultados Reales. Historias Inspiradoras.</h2>
-        <p class="subtitle">Descubre el poder de la consistencia. Estos son solo algunos de los resultados que alcanzarás en salud y físico.</p>
+        <p class="subtitle" style="text-align: center;">Descubre el poder de la consistencia. Estos son solo algunos de los resultados que alcanzarás en salud y físico.</p>
         
         <div class="gallery-grid">
             <!-- RESULTADOS INICIALES (3 IMÁGENES COMBINADAS) -->
-            <div class="result-card">
-                <img src="assets/images/resultado_1.jpg" alt="Transformación Antes y Después 1">
-                <p class="caption">¡Baja de peso y aumenta la vitalidad!</p>
-            </div>
-            <div class="result-card">
-                <img src="assets/images/resultado_2.jpg" alt="Transformación Antes y Después 2">
-                <p class="caption">Adiós a la grasa, hola a la energía.</p>
-            </div>
-            <div class="result-card">
-                <img src="assets/images/resultado_3.jpg" alt="Transformación Antes y Después 3">
-                <p class="caption">Transformación completa de cuerpo y mente.</p>
-            </div>
+            <div class="result-card"><img src="assets/images/resultado_1.jpg" alt="Transformación Antes y Después 1"><p class="caption">¡Baja de peso y aumenta la vitalidad!</p></div>
+            <div class="result-card"><img src="assets/images/resultado_2.jpg" alt="Transformación Antes y Después 2"><p class="caption">Adiós a la grasa, hola a la energía.</p></div>
+            <div class="result-card"><img src="assets/images/resultado_3.jpg" alt="Transformación Antes y Después 3"><p class="caption">Transformación completa de cuerpo y mente.</p></div>
         </div>
 
         <!-- BOTÓN PARA ABRIR LA GALERÍA MODAL -->
-        <button id="openModalBtn" class="cta-button results-cta secondary-cta">
+        <button id="openModalBtn" class="cta-button cta-tertiary" style="margin-top: 30px;">
             Ver Más Resultados (¡20 Historias Adicionales!)
         </button>
 
-        <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20estoy%20muy%20interesada%20en%20comprar%20el%20plan%20para%20mejorar%20el%20estilo%20de%20vida" class="cta-button results-cta">
-            ¡Quiero mi Propio Antes y Después!
-        </a>
-    </section>
-
-    <!-- 3. PROGRAMA Y VALOR - ORDEN SIN CAMBIOS -->
-    <section class="section program-section">
-        <h2>Tu Transformación Comienza Hoy: Esto Incluye Tu Plan</h2>
+        <!-- 2.2 SECCIÓN DEL PROGRAMA -->
+        <h2 style="margin-top: 40px;">Tu Transformación Comienza Hoy: Esto Incluye Tu Plan</h2>
         <div class="program-grid">
             <div class="program-item">
                 <h3>Plataforma Online Premium</h3>
@@ -278,10 +284,64 @@
                 <p>Forma parte de nuestra comunidad de bienestar, con guía constante, apoyo y responsabilidad de líderes en el camino hacia tu mejor versión.</p>
             </div>
         </div>
+
+        <!-- BOTÓN CTA 2 -->
+        <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20quiero%20obtener%20mi%20propio%20resultado%20como%20los%20que%20vi%20en%20la%20página." class="cta-button cta-secondary">
+            Quiero mi propio resultado
+        </a>
     </section>
     
-    <!-- SECCIÓN MI HISTORIA / CONFIANZA - ORDEN SIN CAMBIOS -->
-    <section class="section story-section bg-mint">
+    <!-- BLOQUE 3 - URGENCIA Y BENEFICIOS - Fondo Naranja #E27138 -->
+    <section class="section section-orange">
+        <div class="hero-content" style="padding: 0;">
+            
+            <!-- CONTADOR DE URGENCIA Y OFERTA (CENTRADOS) -->
+            <div class="urgency-box">
+                <p class="urgency-text" style="color: #fff;">OFERTA DISPONIBLE por tiempo limitado</p>
+                <div class="countdown" id="countdown"></div> <!-- RELOJ CENTRADO -->
+                <p class="bonus-text">Compra ahora y accede a <strong>1 Clase Gratuita de Ejercicios</strong> y <strong>4 Clases Gratuitas de Nutrición</strong> presencial.</p>
+            </div>
+            
+            <!-- LISTA DE ALTO VALOR (CENTRALIZADA CON ÍTEMS A LA IZQUIERDA) -->
+            <div class="benefits-list">
+                <p class="value-statement" style="font-weight: 700; font-size: 1.2rem; margin-top: 30px;">Esto es lo que obtienes con tu plan PROBADO para resultados reales:</p>
+                <ul>
+                    <li><strong>PLAN PROBADO:</strong> Garantizado para bajar en promedio <strong>2 a 3 kg por semana.</strong></li>
+                    <li><strong>24/7 Plataforma Nutricional:</strong> Recetas saludables, rutinas de ejercicios profesionales, <strong>actualizadas mes a mes.</strong></li>
+                    <li><strong>Asesor con Atención Personalizada:</strong> Soporte directo para resolver dudas y optimizar tu progreso.</li>
+                    <li><strong>Reto Exclusivo de 21 Días:</strong> Incorporación inmediata a nuestra comunidad para asegurar resultados físicos rápidos y en grupo.</li>
+                    <li><strong>Scanner de Bioimpedancia:</strong> Medición de grasa y músculo valorada en <strong>$50.000 CLP</strong> (incluido sin costo extra).</li>
+                    <li><strong>Cursos Online de Nutrición en Vivo:</strong> Clases semanales por Zoom para que aprendas a comer y domines la nutrición.</li>
+                    <li><strong>Suministro de Suplementos Nutricionales:</strong> El soporte de nutrientes esencial para acelerar tu metabolismo y energía.</li>
+                    <li><strong>Aplicación de Rutinas Profesionales:</strong> Acceso fácil a tus entrenamientos desde cualquier dispositivo.</li>
+                    <li><strong>Actividades Presenciales:</strong> Eventos para construir tu mejor versión y conectar con la comunidad.</li>
+                    <li>Oxida la grasa, controla tu peso de forma guiada y <strong>sostenible.</strong></li>
+                    <li>Mejora drásticamente tu digestión, aumenta tu energía y vitalidad diaria.</li>
+                    <li>Optimiza tu enfoque, concentración y sistemas cognitivos.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOQUE 4 - REITERACIÓN DE PRECIO - Fondo Naranja/Imagen -->
+    <section class="section-price-hero section">
+        <div class="hero-content">
+             <!-- PRECIO DE REFERENCIA Y DESCUENTO -->
+            <div class="price-container">
+                <span class="original-price">VALOR NORMAL SOBRE $350.000 CLP</span>
+                <p class="discount-highlight">¡SOLO HOY $115.000 CLP!</p>
+            </div>
+
+            <!-- BOTÓN CTA 3 -->
+            <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20voy%20a%20aprovechar%20la%20promoción%20de%20$115.000%20CLP." class="cta-button cta-secondary">
+                Voy a aprovechar la promoción 🔥
+            </a>
+            <p class="small-print" style="color: #fff;">Haz clic para iniciar tu compra a través de WhatsApp. **¡ENVÍO A TODO CHILE!** Cupos Limitados.</p>
+        </div>
+    </section>
+
+    <!-- BLOQUE 5 - MI HISTORIA - Fondo Verde Menta #769E94 -->
+    <section class="section section-mint">
         <div class="story-content">
             <img src="assets/images/mi_foto.jpg" alt="Tu Foto de Perfil" class="profile-photo">
             <h2>Mi Historia: De la Adicción a la Vitalidad</h2> <!-- FRASE ACTUALIZADA -->
@@ -292,9 +352,9 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE LIDERAZGO Y OPORTUNIDAD (Sutil) - ORDEN SIN CAMBIOS -->
-    <section class="section leadership-section">
-        <h2>Un Camino Que No Termina en Ti: Liderazgo y Desarrollo</h2>
+    <!-- BLOQUE 6 - LIDERAZGO Y FOOTER - Fondo Gris Claro -->
+    <section class="section section-f5">
+        <h2 style="margin-bottom: 30px;">Un Camino Que No Termina en Ti: Liderazgo y Desarrollo</h2>
         <div class="leadership-grid">
             <div class="leadership-item">
                 <h3>Impacta y Genera Ingresos</h3>
@@ -305,15 +365,20 @@
                 <p>Aumenta tu liderazgo, aprende sobre marketing, comunicación efectiva y virtud. Convierte tu éxito en bienestar en un negocio con propósito.</p>
             </div>
         </div>
+
+        <!-- BOTÓN CTA 4 -->
+        <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20estoy%20lista%20para%20formarme%20como%20Coach%20de%20Bienestar%20y%20conocer%20la%20oportunidad%20de%20ingresos." class="cta-button cta-primary">
+            ESTOY LISTA PARA FORMARME COMO COACH DE BIENESTAR
+        </a>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>&copy; 2025 Transformación 360°. Todos los derechos reservados.</p>
+            <p>Contacto: <a href="https://api.whatsapp.com/send?phone=56981590912">WhatsApp +56 9 8159 0912</a></p>
+        </footer>
     </section>
 
-    <!-- FOOTER - ORDEN SIN CAMBIOS -->
-    <footer class="footer">
-        <p>&copy; 2025 Transformación 360°. Todos los derechos reservados.</p>
-        <p>Contacto: <a href="https://api.whatsapp.com/send?phone=56981590912">WhatsApp +56 9 8159 0912</a></p>
-    </footer>
-
-    <!-- ESTRUCTURA DEL MODAL (GALERÍA POP-UP) - ORDEN SIN CAMBIOS -->
+    <!-- ESTRUCTURA DEL MODAL (GALERÍA POP-UP) - Sin cambios, se mantiene al final -->
     <div id="resultsModal" class="modal-overlay">
         <div class="modal-content">
             <button class="close-button">&times;</button>
@@ -321,7 +386,7 @@
             <p class="subtitle" style="color: #666;">Inspírate con el poder de nuestro sistema.</p>
             
             <div class="modal-gallery-grid">
-                <!-- Aquí van las 20 fotos adicionales. Debes nombrarlas resultado_4.jpg hasta resultado_23.jpg -->
+                <!-- Fotos adicionales del modal -->
                 <div class="result-card"><img src="assets/images/resultado_4.jpg" alt="Resultado 4"><p class="caption">¡Impacto total!</p></div>
                 <div class="result-card"><img src="assets/images/resultado_5.jpg" alt="Resultado 5"><p class="caption">Más vitalidad.</p></div>
                 <div class="result-card"><img src="assets/images/resultado_6.jpg" alt="Resultado 6"><p class="caption">Logro increíble.</p></div>
@@ -329,58 +394,4 @@
                 <div class="result-card"><img src="assets/images/resultado_8.jpg" alt="Resultado 8"><p class="caption">Transformación física.</p></div>
                 <div class="result-card"><img src="assets/images/resultado_9.jpg" alt="Resultado 9"><p class="caption">Pérdida de peso.</p></div>
                 <div class="result-card"><img src="assets/images/resultado_10.jpg" alt="Resultado 10"><p class="caption">Aumento de energía.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_11.jpg" alt="Resultado 11"><p class="caption">Salud renovada.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_12.jpg" alt="Resultado 12"><p class="caption">Meta alcanzada.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_13.jpg" alt="Resultado 13"><p class="caption">Nueva confianza.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_14.jpg" alt="Resultado 14"><p class="caption">Fuerza y vitalidad.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_15.jpg" alt="Resultado 15"><p class="caption">Adiós fatiga.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_16.jpg" alt="Resultado 16"><p class="caption">Cuerpo en forma.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_17.jpg" alt="Resultado 17"><p class="caption">Cambio de hábitos.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_18.jpg" alt="Resultado 18"><p class="caption">Libertad digestiva.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_19.jpg" alt="Resultado 19"><p class="caption">Energía total.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_20.jpg" alt="Resultado 20"><p class="caption">Mejor versión.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_21.jpg" alt="Resultado 21"><p class="caption">Bienestar completo.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_22.jpg" alt="Resultado 22"><p class="caption">Transformación real.</p></div>
-                <div class="result-card"><img src="assets/images/resultado_23.jpg" alt="Resultado 23"><p class="caption">Salud para siempre.</p></div>
-            </div>
-
-            <!-- CTA DENTRO DEL MODAL -->
-            <a href="https://api.whatsapp.com/send?phone=56981590912&text=Hola,%20vi%20la%20galer%C3%ADa%20completa%20y%20quiero%20comenzar%20mi%20plan%20ahora%20mismo!" class="cta-button modal-cta">
-                ¡Quiero comenzar con mi plan ahora!
-            </a>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <!-- El script countdown.js es el que da vida al reloj -->
-    <script src="assets/js/countdown.js"></script>
-    <script>
-        // Lógica para el MODAL (POP-UP)
-
-        const modal = document.getElementById('resultsModal');
-        const openBtn = document.getElementById('openModalBtn');
-        const closeBtn = document.querySelector('.close-button');
-
-        // Función para abrir el modal
-        openBtn.onclick = function() {
-            modal.style.display = 'flex';
-            // Opcional: Deshabilitar el scroll del cuerpo para enfocarse en el modal
-            document.body.style.overflow = 'hidden'; 
-        }
-
-        // Función para cerrar el modal con la X
-        closeBtn.onclick = function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restaurar el scroll
-        }
-
-        // Función para cerrar el modal al hacer clic fuera de él
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Restaurar el scroll
-            }
-        }
-    </script>
-</body>
-</html>
+                <div class="result-card"><img src="assets/images/resultado_11.jpg" alt="Resultado 11">
