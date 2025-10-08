@@ -244,23 +244,24 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow-y: auto; /* Para permitir scroll dentro si el contenido es grande */
+            overflow-y: auto; /* Permite el scroll en el fondo negro */
             background-color: rgba(0, 0, 0, 0.9);
             justify-content: center;
-            align-items: center;
-            /* Usar 'flex' cuando se muestre el modal */
+            align-items: flex-start; /* CORRECCIÓN: Alinea el contenido al inicio (arriba) para que el scroll funcione correctamente */
+            padding-top: 20px;
+            padding-bottom: 20px;
         }
         .modal-content {
             background-color: #fff;
-            margin: 40px auto; /* Margen superior e inferior para evitar que toque los bordes */
+            margin: 20px auto; /* CORRECCIÓN: Ajustamos los márgenes */
             padding: 20px;
             border-radius: 10px;
             width: 90%;
             max-width: 1000px;
             position: relative;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            /* CORRECCIÓN: Eliminamos el max-height para permitir que crezca con las 40 fotos */
-            /* max-height: 90vh; */ 
+            max-height: 95vh; /* CORRECCIÓN: Establece una altura máxima relativa */
+            overflow-y: auto; /* CORRECCIÓN: Hace que la caja de contenido blanca sea la que tenga scroll */
         }
         .modal-gallery-grid {
             display: grid;
@@ -270,6 +271,12 @@
         }
         .modal-gallery-grid .result-card {
             text-align: center;
+        }
+        .modal-gallery-grid .result-card p.caption {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 5px;
+            color: var(--color-text-dark);
         }
         .close-button {
             position: absolute;
@@ -499,10 +506,56 @@
     <script>
         // CORRECCIÓN: Aumentamos el número total de resultados a 40 (del 4 al 43).
         const totalResults = 40;
+        
+        // CORRECCIÓN: Lista de 40 frases de alto impacto.
+        const dynamicCaptions = [
+            "Adiós a la ansiedad por comer",
+            "Resultado en 21 días garantizado",
+            "Enfoque en tu nutrición celular",
+            "80% alimentación, 20% ejercicio",
+            "Recupera tu vitalidad perdida",
+            "Aumento de autoestima y confianza",
+            "Pérdida de peso sostenible",
+            "Rutinas de ejercicio para casa",
+            "Comunidad de apoyo y motivación",
+            "Metabolismo acelerado naturalmente",
+            "Mejora tu calidad de sueño",
+            "Desintoxicación y bienestar total",
+            "Clases de cocina saludable",
+            "Aprendizaje de por vida",
+            "Esculpe tu figura sin gimnasio",
+            "Transformación mental y física",
+            "Guía de suplementación experta",
+            "Resultados que se mantienen",
+            "Control de azúcar en la sangre",
+            "Piel radiante y cabello fuerte",
+            "Soporte personalizado 1 a 1",
+            "Programa apto para toda edad",
+            "Supera el estancamiento de peso",
+            "Aprende a amar el ejercicio",
+            "Alcanza tus metas fitness",
+            "Libérate de las dietas yo-yo",
+            "Energía para jugar con tus hijos",
+            "Cuerpo más fuerte y tonificado",
+            "Mejora drástica en digestión",
+            "Menos dolores articulares",
+            "Conviértete en tu mejor versión",
+            "Sistema activo y divertido",
+            "Clases de nutrición en vivo",
+            "Reto de transformación grupal",
+            "Fácil de seguir, grandes resultados",
+            "Controla tu apetito emocional",
+            "Vive sin culpa la comida",
+            "Motivación constante asegurada",
+            "El cambio que tu cuerpo pedía",
+            "Más energía desde el día 1" // 40th item
+        ];
+
         const resultsData = Array.from({ length: totalResults }, (_, i) => ({
             // Los IDs de imagen irán de 4 a 43 (i + 4)
             id: i + 4,
-            caption: `Transformación ${i + 4}`
+            // Usamos el índice modular para las frases si hay más fotos que frases, aunque ya tenemos 40
+            caption: dynamicCaptions[i] || `Transformación ${i + 4}`
         }));
 
         // Función para poblar la galería y el carrusel
@@ -533,7 +586,7 @@
             }
             carousel.innerHTML = carouselContent;
 
-            // 2. Crear el contenido del Modal (Usamos todos los 40 resultados)
+            // 2. Crear el contenido del Modal (Usamos todos los 40 resultados con captions dinámicos)
             resultsData.forEach(result => {
                 modalContent += `
                     <div class="result-card">
@@ -559,6 +612,11 @@
                 openBtn.addEventListener('click', function() {
                     modal.style.display = 'flex'; // Abre el modal
                     document.body.style.overflow = 'hidden'; // Evita el scroll del fondo
+                    // CORRECCIÓN: Aseguramos el scroll se vaya al inicio del contenido del modal
+                    const modalContent = document.querySelector('.modal-content');
+                    if (modalContent) {
+                        modalContent.scrollTop = 0;
+                    }
                 });
 
                 closeBtn.addEventListener('click', function() {
